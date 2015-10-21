@@ -10,7 +10,7 @@ module.exports = function (app) {
                     main: {
                         template: require('./features/home/home.template.html'),
                         controller: 'homeController'
-                    },
+                    }
                 }
             });
     });
