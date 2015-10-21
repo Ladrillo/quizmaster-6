@@ -11,5 +11,3 @@ var app = angular.module('app', [uiRouter, ngResource, '$resource']);
 require('./features/home/')(app); 
 
 require('./routes')(app);
-
-require('./features/contact/')(app);

@@ -12,25 +12,6 @@ module.exports = function (app) {
                         controller: 'homeController'
                     },
                 }
-            })
-            .state('stylists', {
-                url: '/stylists',
-                views: {
-                    main: {
-                        template: require('./features/stylists/stylists.template.html'),
-                        controller: 'stylistsController',
-                        controllerAs: 'stylists'
-                    },
-                }
-            })
-            .state('contact', {
-                url: '/contact',
-                views: {
-                    main: {
-                        template: require('./features/contact/contact.template.html'),
-                        controller: 'contactController'
-                    },
-                }
             });
     });
 };
