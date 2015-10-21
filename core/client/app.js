@@ -8,12 +8,7 @@ var ngResource = require('ng-resource');
 var app = angular.module('app', [uiRouter, ngResource, '$resource']);
 
 
-
-
-
-
-require('./features/home/')(app); // feature implemented in ES5
-require('./features/stylists/'); // feature partly implemented in ES6
+require('./features/home/')(app); 
 
 require('./routes')(app);
 

@@ -1,10 +1,10 @@
 // routes of our RESTful API
-var usersCtrl = require('../controllers/users.server.controller.js');
+// var usersCtrl = require('../controllers/users.server.controller.js');
 
 module.exports = function (app) {
-    app.route('/api/users')
-        .post(usersCtrl.postUser)
-        .get(usersCtrl.getUsers);
+    // app.route('/api/users')
+    //     .post(usersCtrl.postUser)
+    //     .get(usersCtrl.getUsers);
 
     // THESE ENDPOINTS DO NOT EXIST:
     // app.route('/api/users/:id')

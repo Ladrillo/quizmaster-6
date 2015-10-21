@@ -5,6 +5,5 @@ var config = require('./config'),
 module.exports = function () {
     var db = mongoose.connect(config.db);
     require('../models/user.server.model');
-    require('../models/ticket.server.model');
     return db;
 };
