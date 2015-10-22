@@ -1,7 +1,11 @@
 // routes of our RESTful API
-// var usersCtrl = require('../controllers/users.server.controller.js');
+var usersCtrl = require('../controllers/users.server.controller.js');
 
 module.exports = function (app) {
+    app.route('/api/testing')
+        .get(usersCtrl.sayHello);
+    
+    
     // app.route('/api/users')
     //     .post(usersCtrl.postUser)
     //     .get(usersCtrl.getUsers);
@@ -11,5 +15,5 @@ module.exports = function (app) {
     //     .get(usersCtrl.getUser)
     //     .patch(usersCtrl.patchUser)
     //     .put(usersCtrl.putUser)
-    //     .delete(usersCtrl.deleteUser);
+    //     .delete(usersCtrl.deleteUser)
 };
