@@ -33,11 +33,13 @@ module.exports = function () {
 
     // this middleware will run no matter the environment
     app.use(cors());
+    
     app.use(bodyParser.urlencoded(
         {
             extended: true
         }));
     app.use(bodyParser.json());
+    
     app.use(methodOverride());
 
 
