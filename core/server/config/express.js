@@ -9,7 +9,8 @@ var config = require('./config'),
     methodOverride = require('method-override'),
     session = require('express-session'),
     webpack = require('webpack'),
-    webpackMiddleware = require('webpack-dev-middleware');
+    webpackMiddleware = require('webpack-dev-middleware'),
+    passport = require('passport');
 
 
 module.exports = function () {
@@ -33,13 +34,13 @@ module.exports = function () {
 
     // this middleware will run no matter the environment
     app.use(cors());
-    
+
     app.use(bodyParser.urlencoded(
         {
             extended: true
         }));
     app.use(bodyParser.json());
-    
+
     app.use(methodOverride());
 
 
@@ -55,6 +56,11 @@ module.exports = function () {
     // route is relative to server.js
     app.set('views', './core/server/views');
     app.set('view engine', 'ejs');
+
+
+    // HERE WE PLUG PASSPORT MIDDLEWARE
+    app.use(passport.initialize());
+    app.use(passport.session());
 
 
     // HERE WE INCLUDE THE ROUTES
