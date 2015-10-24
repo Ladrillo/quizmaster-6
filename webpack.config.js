@@ -1,4 +1,5 @@
 var path = require('path');
+var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
     context: path.resolve('core/client'),
@@ -10,6 +11,10 @@ module.exports = {
         publicPath: '/build/',
         filename: 'bundle.js'
     },
+
+    plugins: [
+        new ExtractTextPlugin('styles.css')
+    ],
 
     module: {
         preloaders: [
@@ -28,20 +33,15 @@ module.exports = {
             {
                 test: /\.css$/,
                 exclude: /node_modules/,
-                loader: 'style-loader!css-loader'
+                loader: ExtractTextPlugin.extract('style-loader', 'css-loader')
             },
             {
                 test: /\.scss$/,
                 exclude: /node_modules/,
-                loader: 'style-loader!css-loader!sass-loader'
+                loader: ExtractTextPlugin.extract('style-loader', 'css-loader!sass-loader')
             },
             {
                 test: /\.es6$/,
-                exclude: /node_modules/,
-                loader: 'babel-loader'
-            },
-            {
-                test: /\.js$/,
                 exclude: /node_modules/,
                 loader: 'babel-loader'
             },
