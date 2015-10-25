@@ -9,8 +9,8 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "NODE_ENV=production node server.js",
-    "postinstall": "webpack --config webpack.config.js --progress --colors"
+    "start": "node server.js",
+    "postinstall": "NODE_ENV=production webpack --config webpack.config.js --progress --colors"
   },
   "repository": {
     "type": "git",
