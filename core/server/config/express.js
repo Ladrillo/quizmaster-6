@@ -75,7 +75,14 @@ module.exports = function () {
 
     // THIS WILL BE ANGULAR APP
     // needs to come after setting the rendering engine
-    app.use(express.static('./core/client'));
+    app.use(express.static('./core/client'))
+        .get('/', function (req, res) {
+            res.sendFile('index.html', {
+                root: './core/client'
+            });
+        });
+
+
 
     return app;
 };
