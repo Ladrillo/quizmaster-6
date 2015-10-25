@@ -6,10 +6,10 @@ module.exports = {
 
     // context: path.resolve(__dirname, 'core/client/'),
 
-    entry: ['./core/client/app'],
+    entry: ['./core/client/app.js'],
 
     output: {
-        path: path.join(__dirname, 'build'),
+        path: '/build',
         publicPath: '/build/',
         filename: 'bundle.js'
     },
