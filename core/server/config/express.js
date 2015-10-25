@@ -28,7 +28,7 @@ module.exports = function () {
             publicPath: '/build/'
         }));
     }
-    else if (process.env.NODE_ENV === 'production') {
+    else {
         app.use(compress());
 
         app.use(webpackMiddleware(webpack(webpackConfigProd), {
