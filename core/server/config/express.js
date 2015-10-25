@@ -29,12 +29,6 @@ module.exports = function () {
     }
     else {
         app.use(compress());
-
-        webpackConfig = require('../../../webpack-p.config');
-        app.use(webpackMiddleware(webpack(webpackConfig), {
-            inline: true,
-            publicPath: '/build/'
-        }));
     }
 
 
