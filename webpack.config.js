@@ -6,7 +6,7 @@ module.exports = {
 
     context: path.resolve(__dirname, 'core/client/'),
 
-    entry: './app',
+    entry: path.resolve('core/client/', 'app.js'),
 
     output: {
         path: path.resolve('/build'),
