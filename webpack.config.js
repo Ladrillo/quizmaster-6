@@ -4,13 +4,12 @@ var path = require('path');
 
 module.exports = {
 
-    // context: path.resolve(__dirname, 'core/client/'),
+    context: path.resolve(__dirname, 'core/client/'),
 
     entry: ['./core/client/app.js'],
 
     output: {
         path: __dirname + '/core/client/build',
-        // publicPath: '/build/',
         filename: 'bundle.js'
     },
 
