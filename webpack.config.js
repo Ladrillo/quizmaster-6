@@ -2,6 +2,7 @@ var path = require('path');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
+
     context: path.resolve('core/client'),
 
     entry: './app.js',
@@ -17,7 +18,7 @@ module.exports = {
     ],
 
     module: {
-        preloaders: [
+        postLoaders: [
             {
                 test: /\.js$/,
                 exclude: /node_modules/,
