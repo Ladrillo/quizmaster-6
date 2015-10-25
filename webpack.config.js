@@ -4,8 +4,6 @@ var path = require('path');
 
 module.exports = {
 
-    context: path.resolve(__dirname, 'core/client/'),
-
     entry: ['./core/client/app.js'],
 
     output: {
