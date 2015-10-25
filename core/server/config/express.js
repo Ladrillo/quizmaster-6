@@ -22,16 +22,23 @@ module.exports = function () {
     // Environment-dependant middleware
     if (process.env.NODE_ENV === 'development') {
         app.use(morgan('dev'));
+
+        app.use(webpackMiddleware(webpack(webpackConfig), {
+            inline: true,
+            publicPath: '/build/'
+        }));
     }
     else if (process.env.NODE_ENV === 'production') {
         app.use(compress());
+
+        app.use(webpackMiddleware(webpack(webpackConfigProd), {
+            inline: true,
+            publicPath: '/build/'
+        }));
     }
 
-    app.use(webpackMiddleware(webpack(webpackConfig), {
-        inline: true,
-        publicPath: '/build/'
-    }));
-        
+
+
     // this middleware will run no matter the environment
     app.use(cors());
 
