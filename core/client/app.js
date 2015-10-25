@@ -7,8 +7,8 @@ window.$ = $;
 
 var app = angular.module('app', [uiRouter]);
 
-require('./features/home/')(app);
-
-require('./routes')(app);
+// require('./features/home/')(app);
+//
+// require('./routes')(app);
 
 console.log('fucking app loaded, motherfucker!');
