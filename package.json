@@ -5,8 +5,7 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon server.js",
-    "postinstall": "webpack --config ./webpack-p.config.js --progress --colors"
+    "start": "nodemon server.js"
   },
   "repository": {
     "type": "git",

@@ -1,7 +1,6 @@
 // EXPRESS CONFIGURATION FILE
 var config = require('./config'),
     webpackConfig = require('../../../webpack.config'),
-    webpackConfigProd = require('../../../webpack-p.config'),
     express = require('express'),
     cors = require('cors'),
     morgan = require('morgan'),
@@ -31,7 +30,8 @@ module.exports = function () {
     else {
         app.use(compress());
 
-        app.use(webpackMiddleware(webpack(webpackConfigProd), {
+        webpackConfig = require('../../../webpack-p.config');
+        app.use(webpackMiddleware(webpack(webpackConfig), {
             inline: true,
             publicPath: '/build/'
         }));
