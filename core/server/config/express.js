@@ -2,15 +2,12 @@
 var config = require('./config'),
     express = require('express'),
     cors = require('cors'),
-    morgan = require('morgan'),
-    compress = require('compression'),
     bodyParser = require('body-parser'),
     methodOverride = require('method-override'),
     session = require('express-session'),
     webpack = require('webpack'),
-    webpackMiddleware = require('webpack-dev-middleware'),
     passport = require('passport'),
-    webpackConfig;
+    webpackConfig, webpackMiddleware, morgan, compress;
 
 
 module.exports = function () {
@@ -21,17 +18,20 @@ module.exports = function () {
     // Environment-dependant middleware
     if (process.env.NODE_ENV === 'development') {
 
+        webpackMiddleware = require('webpack-dev-middleware');
         webpackConfig = require('../../../webpack.config');
         app.use(webpackMiddleware(webpack(webpackConfig), {
             inline: true,
             publicPath: '/build/'
         }));
 
+        morgan = require('morgan'),
         app.use(morgan('dev'));
     }
     else {
         webpackConfig = require('../../../webpack-p.config');
 
+        compress = require('compression');
         app.use(compress());
     }
 
