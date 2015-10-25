@@ -11,7 +11,7 @@ module.exports = function (app) {
         });
 
         $(document).on('click', function () {
-            $('.my-red').css('color', 'red');
+            $('.my-red').css('color', 'black');
         });
 
 
