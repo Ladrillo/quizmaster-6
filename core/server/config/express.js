@@ -1,6 +1,5 @@
 // EXPRESS CONFIGURATION FILE
 var config = require('./config'),
-    webpackConfig = require('../../../webpack.config'),
     express = require('express'),
     cors = require('cors'),
     morgan = require('morgan'),
@@ -10,7 +9,8 @@ var config = require('./config'),
     session = require('express-session'),
     webpack = require('webpack'),
     webpackMiddleware = require('webpack-dev-middleware'),
-    passport = require('passport');
+    passport = require('passport'),
+    webpackConfig;
 
 
 module.exports = function () {
@@ -20,14 +20,18 @@ module.exports = function () {
 
     // Environment-dependant middleware
     if (process.env.NODE_ENV === 'development') {
-        app.use(morgan('dev'));
 
+        webpackConfig = require('../../../webpack.config');
         app.use(webpackMiddleware(webpack(webpackConfig), {
             inline: true,
             publicPath: '/build/'
         }));
+
+        app.use(morgan('dev'));
     }
     else {
+        webpackConfig = require('../../../webpack-p.config');
+
         app.use(compress());
     }
 
