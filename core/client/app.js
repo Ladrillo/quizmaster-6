@@ -11,4 +11,4 @@ require('./features/home/')(app);
 
 require('./routes')(app);
 
-console.log('fucking app loaded');
+console.log('fucking app loaded, motherfucker!');
