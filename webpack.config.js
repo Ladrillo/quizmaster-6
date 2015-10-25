@@ -1,17 +1,17 @@
 var path = require('path');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
-var buildPath = path.resolve(__dirname, 'build');
+var buildPath = path.resolve(__dirname, 'build', 'bundle.js');
 var mainPath = path.resolve(__dirname, 'core/client', 'app.js');
 
 module.exports = {
 
-    context: path.resolve(__dirname, 'core/client'),
+    context: mainPath,
 
     entry: mainPath,
 
     output: {
-        path: path.resolve(__dirname, 'build/'),
+        path: buildPath,
         publicPath: buildPath,
         filename: 'bundle.js'
     },
