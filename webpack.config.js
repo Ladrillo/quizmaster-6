@@ -4,12 +4,12 @@ var mainPath = path.resolve(__dirname, 'core/client', 'app.js');
 
 module.exports = {
 
-    context: path.join(__dirname, 'core/client'),
+    context: path.resolve(__dirname, 'core/client'),
 
     entry: mainPath,
 
     output: {
-        path: path.join(__dirname, 'build/'),
+        path: path.resolve(__dirname, 'build/'),
         publicPath: '/build/',
         filename: 'bundle.js'
     },
