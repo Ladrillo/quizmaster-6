@@ -6,12 +6,12 @@ module.exports = {
 
     // context: path.resolve(__dirname, 'core/client/'),
 
-    entry: path.resolve(__dirname, 'core/client/app'),
+    entry: ['./core/client/app'],
 
     output: {
-        path: path.resolve('/build'),
-        publicPath: path.resolve('/build/'),
-        filename: './bundle.js'
+        path: path.join(__dirname, 'build'),
+        publicPath: '/build/',
+        filename: 'bundle.js'
     },
 
     plugins: [
