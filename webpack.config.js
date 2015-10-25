@@ -9,8 +9,8 @@ module.exports = {
     entry: ['./core/client/app.js'],
 
     output: {
-        path: '/build',
-        publicPath: '/build/',
+        path: '/core/client/build',
+        // publicPath: '/build/',
         filename: 'bundle.js'
     },
 
