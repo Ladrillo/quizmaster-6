@@ -68,13 +68,12 @@ module.exports = function () {
 
 
     // HERE WE PLUG PASSPORT MIDDLEWARE
-    app.use(passport.initialize());
-    app.use(passport.session());
+    require('./passport.js')(app);
 
 
     // HERE WE INCLUDE THE ROUTES
     // we run the router objects giving them the express app
-    require('../features/users/routes/users.server.routes.js')(app);
+    require('../features/auth/oauth.server.routes.js')(app);
 
 
     // THIS WILL BE ANGULAR APP
