@@ -9,6 +9,7 @@ module.exports = {
 
     output: {
         path: path.resolve('core/client/build'),
+        publicPath: '/build/',
         filename: 'bundle.js'
     },
 
@@ -34,11 +35,13 @@ module.exports = {
                 test: /\.css$/,
                 exclude: /node_modules/,
                 loader: ExtractTextPlugin.extract('style-loader', 'css-loader')
+                // loader: 'style-loader!css-loader'
             },
             {
                 test: /\.scss$/,
                 exclude: /node_modules/,
                 loader: ExtractTextPlugin.extract('style-loader', 'css-loader!sass-loader')
+                // loader: 'style-loader!css-loader!sass-loader'
             },
             {
                 test: /\.es6$/,
@@ -57,4 +60,7 @@ module.exports = {
         extensions: ['', '.js', '.es6']
     },
 
+    devServer: {
+        contentBase: 'core/client'
+    },
 };
