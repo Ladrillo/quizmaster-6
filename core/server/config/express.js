@@ -23,7 +23,10 @@ module.exports = function () {
         webpackConfig = require('../../../webpack.config');
         app.use(webpackMiddleware(webpack(webpackConfig), {
             inline: true,
-            publicPath: '/build/'
+            publicPath: '/build/',
+            stats: {
+                colors: true
+            }
         }));
 
         morgan = require('morgan'),
@@ -77,13 +80,6 @@ module.exports = function () {
     // THIS WILL BE ANGULAR APP
     // needs to come after setting the rendering engine
     app.use(express.static('./core/client'));
-    // app.use(express.static('./build'));
-    // .get('/', function (req, res) {
-    //     res.sendFile('index.html', {
-    //         root: './core/client'
-    //     });
-    // });
-
 
 
     return app;
