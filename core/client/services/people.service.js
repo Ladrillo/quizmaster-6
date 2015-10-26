@@ -1,5 +1,8 @@
 module.exports = function (app) {
-    app.service('peopleService', function () {
+    app.service('peopleService', [peopleService]);
+    
+
+    function peopleService() {
         this.people = ['Brian', 'John', 'Anne'];
-    });
+    };
 };
