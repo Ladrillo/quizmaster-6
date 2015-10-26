@@ -1,14 +1,15 @@
 var angular = require('angular');
 var uiRouter = require('angular-ui-router');
-var $ = require('jquery');
+var angularMaterial = require('angular-material');
 
+var $ = require('jquery');
 window.jQuery = $;
 window.$ = $;
 
-var app = angular.module('app',  [uiRouter]);
+var app = angular.module('app',  [uiRouter, angularMaterial]);
 
 require('./features/home/')(app);
 
 require('./routes')(app);
 
-console.log('fucking app loaded, motherfucker!');
+console.log('app loaded, hoorray!');
