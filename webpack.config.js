@@ -5,12 +5,16 @@ var ExtractTextPlugin = require('extract-text-webpack-plugin');
 module.exports = {
     context: path.resolve('core/client'),
 
-    entry: ['./app.js'],
+    entry: ['./app'],
 
     output: {
         path: path.resolve('core/client/build'),
         publicPath: '/build/',
         filename: 'bundle.js'
+    },
+
+    devServer: {
+        contentBase: 'core/client'
     },
 
     plugins: [
@@ -35,13 +39,11 @@ module.exports = {
                 test: /\.css$/,
                 exclude: /node_modules/,
                 loader: ExtractTextPlugin.extract('style-loader', 'css-loader')
-                // loader: 'style-loader!css-loader'
             },
             {
                 test: /\.scss$/,
                 exclude: /node_modules/,
                 loader: ExtractTextPlugin.extract('style-loader', 'css-loader!sass-loader')
-                // loader: 'style-loader!css-loader!sass-loader'
             },
             {
                 test: /\.es6$/,
@@ -58,9 +60,5 @@ module.exports = {
 
     resolve: {
         extensions: ['', '.js', '.es6']
-    },
-
-    devServer: {
-        contentBase: 'core/client'
-    },
+    }
 };
