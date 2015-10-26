@@ -3,8 +3,9 @@ var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 
 module.exports = {
+    context: path.resolve('core/client'),
 
-    entry: ['./core/client/app.js'],
+    entry: ['./app.js'],
 
     output: {
         path: __dirname + '/core/client/build',
