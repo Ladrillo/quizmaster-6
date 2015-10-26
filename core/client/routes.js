@@ -1,5 +1,8 @@
 module.exports = function (app) {
-    app.config(function ($stateProvider, $urlRouterProvider) {
+    app.config(['$stateProvider', '$urlRouterProvider', routing]);
+
+
+    function routing($stateProvider, $urlRouterProvider) {
         $urlRouterProvider
             .otherwise('/');
 
@@ -13,5 +16,5 @@ module.exports = function (app) {
                     }
                 }
             });
-    });
+    }
 };
