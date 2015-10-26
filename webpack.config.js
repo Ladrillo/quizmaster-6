@@ -21,7 +21,7 @@ module.exports = {
         new ExtractTextPlugin('styles.css')
     ],
 
-    devtool: 'inline-source-map',
+    devtool: 'cheap-module-eval-source-map',
 
     module: {
         postLoaders: [
