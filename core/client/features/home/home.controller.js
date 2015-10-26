@@ -1,5 +1,7 @@
 module.exports = function (app) {
-    app.controller('homeController', function ($scope, $http, peopleService) {
+    app.controller('homeController', ['$scope', '$http', 'peopleService', homeController]);
+
+    function homeController($scope, $http, peopleService) {
         $scope.test = "this is a test of the home view";
         $scope.people = peopleService.people;
 
@@ -15,5 +17,5 @@ module.exports = function (app) {
         });
 
 
-    });
+    }
 };

@@ -5,7 +5,7 @@ var $ = require('jquery');
 window.jQuery = $;
 window.$ = $;
 
-var app = angular.module('app', [uiRouter]);
+var app = angular.module('app',  [uiRouter]);
 
 require('./features/home/')(app);
 
