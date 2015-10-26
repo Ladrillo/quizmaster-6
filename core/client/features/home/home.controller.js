@@ -11,7 +11,6 @@ module.exports = function (app) {
                 var jsonString = angular.toJson(data.data[0]);
                 console.log(jsonString);
             });
-
         $(document).on('click', function () {
             $('.my-red').css('color', 'black');
         });
