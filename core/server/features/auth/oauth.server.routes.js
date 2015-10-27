@@ -29,7 +29,7 @@ module.exports = function (app) {
 
 
     // CHECKING IF LOGIN
-    app.route('/checklogin')
+    app.route('/auth/checklogin')
         .get(function (req, res) {
             if (req.user) res.send(true);
             else res.send(false);
@@ -37,7 +37,7 @@ module.exports = function (app) {
 
 
     // LOGING OUT
-    app.route('/logout')
+    app.route('/auth/logout')
         .get(function (req, res) {
             req.logout();
             res.redirect('/');
