@@ -10,7 +10,7 @@ var mongoose = require('./core/server/config/mongoose'),
 
 var db = mongoose(),
     app = express();
-    passport = passport();
+    // passport = passport();
 
 
 app.listen(port, function () {

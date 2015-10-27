@@ -16,6 +16,22 @@ module.exports = function () {
     var app = express();
 
 
+    // here we set our templating engine
+    // route is relative to server.js
+    app.set('views', './core/server/views');
+    app.set('view engine', 'ejs');
+    
+    
+    // this middleware will run no matter the environment
+    app.use(cors());
+    app.use(bodyParser.urlencoded(
+        {
+            extended: true
+        }));
+    app.use(bodyParser.json());
+    app.use(methodOverride());
+    
+    
     // Environment-dependant middleware
     if (process.env.NODE_ENV === 'development') {
 
@@ -40,31 +56,12 @@ module.exports = function () {
     }
 
 
-
     // this middleware will run no matter the environment
-    app.use(cors());
-
-    app.use(bodyParser.urlencoded(
-        {
-            extended: true
-        }));
-    app.use(bodyParser.json());
-
-    app.use(methodOverride());
-
-
-    // cookie support
     app.use(session({
         saveUninitialized: true,
         resave: true,
         secret: config.sessionSecret
     }));
-
-
-    // here we set our templating engine
-    // route is relative to server.js
-    app.set('views', './core/server/views');
-    app.set('view engine', 'ejs');
 
 
     // HERE WE PLUG PASSPORT MIDDLEWARE
@@ -73,7 +70,7 @@ module.exports = function () {
 
     // HERE WE INCLUDE THE ROUTES
     // we run the router objects giving them the express app
-    require('../features/auth/oauth.server.routes.js')(app);
+    require('../features/auth/oauth.server.routes')(app);
 
 
     // THIS WILL BE ANGULAR APP
