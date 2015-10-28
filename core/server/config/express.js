@@ -16,9 +16,33 @@ module.exports = function () {
     var app = express();
 
 
-    // Environment-dependant middleware
-    if (process.env.NODE_ENV === 'development') {
+    // here we set our templating engine
+    // route is relative to server.js
+    app.set('views', './core/server/views');
+    app.set('view engine', 'ejs');
+    
+    
+    // this middleware will run no matter the environment
+    app.use(cors());
 
+    app.use(bodyParser.json());
+    app.use(bodyParser.urlencoded(
+        {
+            extended: true
+        }));
+
+    app.use(methodOverride());
+
+    app.use(session({
+        saveUninitialized: true,
+        resave: true,
+        secret: config.sessionSecret
+    }));
+    
+    
+    // ENVIRONMENT DEPENDANT MIDDLEWARE
+    if (process.env.NODE_ENV === 'development') {
+        // Webpack
         webpackMiddleware = require('webpack-dev-middleware');
         webpackConfig = require('../../../webpack.config');
         app.use(webpackMiddleware(webpack(webpackConfig), {
@@ -28,53 +52,26 @@ module.exports = function () {
                 colors: true
             }
         }));
-
+        // the rest
         morgan = require('morgan'),
         app.use(morgan('dev'));
     }
-    else {
+    else if ((process.env.NODE_ENV === 'production')) {
+        // Webpack
         webpackConfig = require('../../../webpack-p.config');
-
+        // the rest
         compress = require('compression');
         app.use(compress());
     }
 
 
-
-    // this middleware will run no matter the environment
-    app.use(cors());
-
-    app.use(bodyParser.urlencoded(
-        {
-            extended: true
-        }));
-    app.use(bodyParser.json());
-
-    app.use(methodOverride());
-
-
-    // cookie support
-    app.use(session({
-        saveUninitialized: true,
-        resave: true,
-        secret: config.sessionSecret
-    }));
-
-
-    // here we set our templating engine
-    // route is relative to server.js
-    app.set('views', './core/server/views');
-    app.set('view engine', 'ejs');
-
-
     // HERE WE PLUG PASSPORT MIDDLEWARE
-    app.use(passport.initialize());
-    app.use(passport.session());
+    require('./passport.js')(app);
 
 
     // HERE WE INCLUDE THE ROUTES
     // we run the router objects giving them the express app
-    require('../features/users/routes/users.server.routes.js')(app);
+    require('../features/auth/oauth.server.routes')(app);
 
 
     // THIS WILL BE ANGULAR APP

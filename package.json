@@ -48,6 +48,7 @@
     "node-libs-browser": "^0.5.3",
     "node-sass": "^3.3.3",
     "passport": "^0.3.0",
+    "passport-google-oauth": "^0.2.0",
     "path": "^0.12.7",
     "sass-loader": "^3.0.0",
     "strip-loader": "^0.1.0",

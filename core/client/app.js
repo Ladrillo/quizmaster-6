@@ -6,6 +6,7 @@ var angularMaterial = require('angular-material');
 var app = angular.module('app',  [uiRouter, angularMaterial]);
 
 require('./features/home/')(app);
+require('./features/home2/')(app);
 
 require('./routes')(app);
 
