@@ -8,6 +8,7 @@ module.exports = function (app) {
             successRedirect: '/auth/loggeduser',
             failure: '/error/'
         }));
+        
 
     app.route('/auth/google')
         .get(passport.authenticate('google', {
@@ -24,7 +25,7 @@ module.exports = function (app) {
             res.render('loggeduser', {
                 user: req.user
             });
-            console.log(req.user);
+            console.log('hi');
         });
 
 

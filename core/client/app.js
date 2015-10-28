@@ -11,3 +11,4 @@ require('./features/home2/')(app);
 require('./routes')(app);
 
 console.log('app loaded, hoorray!');
+console.log(window.user);
