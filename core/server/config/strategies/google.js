@@ -1,14 +1,15 @@
-var passport = require('passport'),
+var config = require('../config'),
+    passport = require('passport'),
     GoogleStrategy = require('passport-google-oauth').OAuth2Strategy,
-    User = require('../../features/users/user.server.model.js');
+    User = require('../../features/users/user.server.model');
     
 module.exports = function () {
     
     passport.use(new GoogleStrategy(
         {
-            clientID: "419787304121-0h5tfaol93fsrahr3ev0pvfs9j072trc.apps.googleusercontent.com",
-            clientSecret: "XWSe_3RYz39-nj2gb7dZcar6",
-            callbackURL: "http://localhost:5000/auth/google/oauth2redirect"
+            clientID: config.google.clientID,
+            clientSecret: config.google.clientSecret,
+            callbackURL: config.google.callbackURL
         },
         
         function (req, accessToken, refreshToken, profile, done) {
@@ -35,5 +36,5 @@ module.exports = function () {
                 }
             });
         }));
-      
+
 };

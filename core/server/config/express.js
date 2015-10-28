@@ -24,17 +24,25 @@ module.exports = function () {
     
     // this middleware will run no matter the environment
     app.use(cors());
+
+    app.use(bodyParser.json());
     app.use(bodyParser.urlencoded(
         {
             extended: true
         }));
-    app.use(bodyParser.json());
-    app.use(methodOverride());
-    
-    
-    // Environment-dependant middleware
-    if (process.env.NODE_ENV === 'development') {
 
+    app.use(methodOverride());
+
+    app.use(session({
+        saveUninitialized: true,
+        resave: true,
+        secret: config.sessionSecret
+    }));
+    
+    
+    // ENVIRONMENT DEPENDANT MIDDLEWARE
+    if (process.env.NODE_ENV === 'development') {
+        // Webpack
         webpackMiddleware = require('webpack-dev-middleware');
         webpackConfig = require('../../../webpack.config');
         app.use(webpackMiddleware(webpack(webpackConfig), {
@@ -44,24 +52,17 @@ module.exports = function () {
                 colors: true
             }
         }));
-
+        // the rest
         morgan = require('morgan'),
         app.use(morgan('dev'));
     }
-    else {
+    else if ((process.env.NODE_ENV === 'production')) {
+        // Webpack
         webpackConfig = require('../../../webpack-p.config');
-
+        // the rest
         compress = require('compression');
         app.use(compress());
     }
-
-
-    // this middleware will run no matter the environment
-    app.use(session({
-        saveUninitialized: true,
-        resave: true,
-        secret: config.sessionSecret
-    }));
 
 
     // HERE WE PLUG PASSPORT MIDDLEWARE
