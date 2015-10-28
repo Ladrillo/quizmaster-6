@@ -1,5 +1,9 @@
-<p>home test: {{ test }}</p>
+<h1>HOME 1</h1>
+
+<input ng-model="newToService"><button ng-click="pushToService(newToService)" class="md-primary md-button">Pushing to people.service</button>
 <p class="my-red" ng-repeat="person in people">{{ person }}</p>
+<input ng-model="newToFactory"><button ng-click="pushToFactory(newToFactory)" class="md-primary md-button">Pushing to people.factory</button>
+<p class="my-red" ng-repeat="person in people2">{{ person }}</p>
 
 
 <md-card>

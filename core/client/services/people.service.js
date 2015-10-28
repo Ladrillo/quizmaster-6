@@ -3,6 +3,12 @@ module.exports = function (app) {
 
 
     function peopleService() {
+
         this.people = ['Brian', 'John', 'Anne'];
+
+        this.pushToService = function (str) {
+            this.people.push(str);
+        };
+        
     }
 };

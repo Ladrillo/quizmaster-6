@@ -1,26 +1,30 @@
 module.exports = function (app) {
-    app.controller('homeController',
+    app.controller('home2Controller',
         [
             '$scope',
             '$http',
             '$rootScope',
             'peopleService',
-            homeController
+            'peopleFactory',
+            home2Controller
         ]);
 
-    function homeController($scope, $http, $rootScope, peopleService) {
+    function home2Controller($scope, $http, $rootScope, peopleService, peopleFactory) {
 
-        $scope.test = "this is a test of the home view";
+        $scope.test = "this is a test of the home2 view";
         $scope.people = peopleService.people;
+        $scope.people2 = peopleFactory.people;
 
-        $http.get("https://api.imgur.com/3/gallery/random/random/0")
-            .success(function (data) {
-                var jsonString = angular.toJson(data.data[0]);
-                console.log(jsonString);
-            });
-            
+        $scope.pushToService = function (newPerson) {
+            peopleService.pushToService(newPerson);
+        };
+
+        $scope.pushToFactory = function (newPerson) {
+            peopleFactory.pushToFactory(newPerson);
+        };
+
         $(document).on('click', function () {
-            $('.my-red').css('color', 'black');
+            $('.my-red').css('color', 'blue');
         });
 
     }
