@@ -8,11 +8,20 @@ module.exports = function (app) {
 
         $stateProvider
             .state('home', {
-                url: '/',
+                url: '/home',
                 views: {
                     main: {
                         template: require('./features/home/home.template.html'),
                         controller: 'homeController'
+                    }
+                }
+            })
+            .state('home2', {
+                url: '/home2',
+                views: {
+                    main: {
+                        template: require('./features/home2/home2.template.html'),
+                        controller: 'home2Controller'
                     }
                 }
             });
