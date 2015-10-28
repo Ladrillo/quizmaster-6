@@ -18,7 +18,7 @@ module.exports = function () {
 
     // here we set our templating engine
     // route is relative to server.js
-    app.set('views', './core/server/views');
+    app.set('views', ['./core/server/features/auth']);
     app.set('view engine', 'ejs');
     
     

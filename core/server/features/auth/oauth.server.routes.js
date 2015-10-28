@@ -5,7 +5,7 @@ module.exports = function (app) {
     // GOOGLE AUTHENTICATION ROUTES
     app.route('/auth/google/oauth2redirect')
         .get(passport.authenticate('google', {
-            successRedirect: '/#/',
+            successRedirect: '/auth/loggeduser',
             failure: '/error/'
         }));
 
