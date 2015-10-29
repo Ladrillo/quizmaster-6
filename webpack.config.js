@@ -4,6 +4,7 @@ var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 
 module.exports = {
+    
     context: path.resolve('core/client'),
 
     entry: ['./app'],
@@ -62,8 +63,17 @@ module.exports = {
                 test: /\.html$/,
                 exclude: /node_modules/,
                 loader: 'html-loader'
+            },
+            {
+                test: /\.jsx$/,
+                exclude: /node_modules/,
+                loader: 'jsx-loader?insertPragma=React.DOM&harmony'
             }
         ]
+    },
+
+    externals: {
+        'react': 'React'
     },
 
     resolve: {
