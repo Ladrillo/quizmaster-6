@@ -5,7 +5,7 @@ module.exports = function (app) {
     // GOOGLE AUTHENTICATION ROUTES
     app.route('/auth/google/oauth2redirect')
         .get(passport.authenticate('google', {
-            successRedirect: '/auth/loggeduser',
+            successRedirect: '/',
             failure: '/error/'
         }));
         
@@ -20,9 +20,9 @@ module.exports = function (app) {
         
 
     // SUCCESS REDIRECT
-    app.route('/auth/loggeduser')
+    app.route('/')
         .get(function (req, res) {
-            res.render('loggeduser', {
+            res.render('index', {
                 userJSON: req.user,
                 userStr: JSON.stringify(req.user)
             });
@@ -41,7 +41,7 @@ module.exports = function (app) {
     app.route('/auth/logout')
         .get(function (req, res) {
             req.logout();
-            res.redirect('/#/');
+            res.redirect('/');
         });
 
 

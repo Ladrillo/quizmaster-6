@@ -12,10 +12,23 @@
 
 <body ng-app="app">
 
+    <div>
+        <h3>You are authenticated as:</h3>
+        <img src="<%= userJSON.image %>"><br>
+        <%= userJSON.displayName %><br>
+        <%= userJSON.email %>
+    </div>
+
     <a ui-sref="home">home</a>
     <a ui-sref="home2">home2</a>
 
     <div ui-view="main"></div>
+    
+    
+
+    <script type="text/javascript">
+        window.user = <%- userStr || 'null' %>;
+    </script>
 
     <script src="./build/bundle.js"></script>
 </body>

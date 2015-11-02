@@ -35,6 +35,7 @@
     "cors": "^2.7.1",
     "css-loader": "^0.21.0",
     "ejs": "^2.3.4",
+    "ejs-compiled-loader": "^2.0.4",
     "express": "^4.13.3",
     "express-session": "^1.11.3",
     "extract-text-webpack-plugin": "^0.8.2",
