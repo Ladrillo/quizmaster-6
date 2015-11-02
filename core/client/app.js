@@ -7,6 +7,7 @@ var app = angular.module('app',  [uiRouter, angularMaterial]);
 
 require('./features/home/')(app);
 require('./features/home2/')(app);
+require('./features/auth_user/')(app);
 
 require('./routes')(app);
 

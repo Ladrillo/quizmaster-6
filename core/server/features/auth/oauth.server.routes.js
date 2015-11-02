@@ -17,15 +17,15 @@ module.exports = function (app) {
                 'https://www.googleapis.com/auth/userinfo.email'
             ]
         }));
-
+        
 
     // SUCCESS REDIRECT
     app.route('/auth/loggeduser')
         .get(function (req, res) {
             res.render('loggeduser', {
-                user: req.user
+                userJSON: req.user,
+                userStr: JSON.stringify(req.user)
             });
-            console.log('hi');
         });
 
 

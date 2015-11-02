@@ -7,16 +7,19 @@
 </head>
 
 <body>
-    <div>
-        <img src="<%= user.image %>">
-        <%= user.displayName %>
-        <%= user.email %>
-    </div>
-<!--
-    <script type="text/javascript">
-       console.log(user);
 
-    </script>-->
+    <div>
+        <h3>You are authenticated as:</h3>
+        <img src="<%= userJSON.image %>"><br>
+        <%= userJSON.displayName %><br>
+        <%= userJSON.email %>
+    </div>
+
+    <script type="text/javascript">
+        window.user = <%- userStr || 'null' %>;
+        console.log(user);
+    </script>
+    
 </body>
 
 </html>
