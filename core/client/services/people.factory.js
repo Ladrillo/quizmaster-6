@@ -1,6 +1,6 @@
 module.exports = function (app) {
+    
     app.factory('peopleFactory', [peopleFactory]);
-
 
     function peopleFactory() {
 
@@ -10,8 +10,6 @@ module.exports = function (app) {
         fact.pushToFactory = function (str) {
             fact.people.push(str);
         };
-
         return fact;
-
     }
 };

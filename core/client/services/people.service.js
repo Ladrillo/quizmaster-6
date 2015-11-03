@@ -1,6 +1,6 @@
 module.exports = function (app) {
+    
     app.service('peopleService', [peopleService]);
-
 
     function peopleService() {
 
@@ -9,6 +9,5 @@ module.exports = function (app) {
         this.pushToService = function (str) {
             this.people.push(str);
         };
-        
     }
 };

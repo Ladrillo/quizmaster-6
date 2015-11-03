@@ -12,24 +12,51 @@
 
 <body ng-app="app">
 
-    <div>
-        <h3>You are authenticated as:</h3>
-        <img src="<%= userJSON.image %>"><br>
-        <%= userJSON.displayName %><br>
-        <%= userJSON.email %>
-    </div>
+    <md-menu-bar>
+        <md-menu>
+            <button ng-click="$mdOpenMenu()">
+                Login
+            </button>
+            <% if (userJSON) { %>
+                <md-menu-content>
+                    <md-menu-item>
+                        <md-button class="md-primary" ng-href="/auth/logout" target="_blank">Sign out</md-button>
+                    </md-menu-item>
+                </md-menu-content>
+            <% } else { %>
+                <md-menu-content>
+                    <md-menu-item>
+                        <md-button class="md-primary" ng-href="/auth/google" target="_blank">Sign in with your Google Account</md-button>
+                    </md-menu-item>
+                    <md-menu-item>
+                        <md-button class="md-primary" ng-href="/auth/google" target="_blank">Sign in with your Google Account</md-button>
+                    </md-menu-item>
+                </md-menu-content>
+            <% } %>
+        </md-menu>
+    </md-menu-bar>
+
+
+    <% if (userJSON) { %>
+        <a href="/auth/logout">Sign out</a>
+        <div>
+            <h3>You are authenticated as:</h3>
+            <img src="<%= userJSON.image %>"><br>
+            <%= userJSON.displayName %><br>
+            <%= userJSON.email %>
+        </div>
+    <% } else { %>
+        <h3>You are NOT authenticated.</h3>
+        <a href="/auth/google">Sign in with your Google Account</a>
+    <% } %>
+
+
 
     <a ui-sref="home">home</a>
     <a ui-sref="home2">home2</a>
-
     <div ui-view="main"></div>
-    
-    
 
-    <script type="text/javascript">
-        window.user = <%- userStr || 'null' %>;
-    </script>
-
+    <script type="text/javascript">window.user = <%- userStr || 'null' %>;</script>
     <script src="./build/bundle.js"></script>
 </body>
 
