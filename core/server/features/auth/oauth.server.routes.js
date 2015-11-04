@@ -3,19 +3,18 @@ var passport = require('passport');
 module.exports = function (app) {
 
     // GOOGLE AUTHENTICATION ROUTES
-    app.route('/auth/google/oauth2redirect')
-        .get(passport.authenticate('google', {
-            successRedirect: '/',
-            failure: '/error/'
-        }));
-        
-
     app.route('/auth/google')
         .get(passport.authenticate('google', {
             scope: [
                 'https://www.googleapis.com/auth/userinfo.profile',
                 'https://www.googleapis.com/auth/userinfo.email'
             ]
+        }));
+
+    app.route('/auth/google/oauth2redirect')
+        .get(passport.authenticate('google', {
+            successRedirect: '/',
+            failure: '/error/'
         }));
         
 
