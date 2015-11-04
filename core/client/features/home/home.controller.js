@@ -1,8 +1,9 @@
 module.exports = function (app) {
-    
+
     app.controller('homeController',
         [
             '$scope',
+            '$state',
             '$http',
             '$rootScope',
             'peopleService',
@@ -11,12 +12,24 @@ module.exports = function (app) {
             homeController
         ]);
 
-    function homeController($scope, $http, $rootScope, peopleService, peopleFactory, authUserService) {
-        
+    function homeController(
+        $scope,
+        $state,
+        $http,
+        $rootScope,
+        peopleService,
+        peopleFactory,
+        authUserService) {
+
+
         $scope.user = authUserService.user;
         $scope.userFromWindow = window.user;
+
+        $scope.myCat = $state.current.data.myCat;
+
+
         $scope.myDisabled = true;
-        
+
         $scope.test = "this is a test of the home view";
         $scope.people = peopleService.people;
         $scope.people2 = peopleFactory.people;

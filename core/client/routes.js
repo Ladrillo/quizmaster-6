@@ -9,6 +9,9 @@ module.exports = function (app) {
         $stateProvider
             .state('home', {
                 url: '/home',
+                data: {
+                    myCat: 'freddy'
+                },
                 views: {
                     main: {
                         template: require('./features/home/home.template.html'),
