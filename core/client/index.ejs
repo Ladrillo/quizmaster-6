@@ -7,11 +7,11 @@
     <link rel="stylesheet" href="build/styles.css">
     <meta name="viewport" content="initial-scale=1" />
     <meta charset="UTF-8" />
-    <title>Webpack project</title>
+    <title>Quizmaster 6</title>
 </head>
 
 <body ng-app="app">
-    <% if (userJSON) { %>
+    <% if (userStr) { %>
         <a ui-sref="home">home</a>
         <a href="/auth/logout">Sign out</a>
         <div>
@@ -28,7 +28,7 @@
 
     <div ui-view="main"></div>
 
-    <script type="text/javascript">window.user = <%- userStr || 'null' %>;</script>
+    <script>window.user = <%- userStr || 'null' %>;</script>
     <script src="./build/bundle.js"></script>
 </body>
 

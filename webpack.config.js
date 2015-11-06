@@ -54,7 +54,7 @@ module.exports = {
                 loader: ExtractTextPlugin.extract('style-loader', 'css-loader!sass-loader')
             },
             {
-                test: /\.es6$/,
+                test: /\.(es6|jsx)$/,
                 exclude: /node_modules/,
                 loader: 'babel-loader'
             },
@@ -67,6 +67,6 @@ module.exports = {
     },
 
     resolve: {
-        extensions: ['', '.js', '.es6']
+        extensions: ['', '.js', '.es6', '.jsx']
     }
 };
