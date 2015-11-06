@@ -3,7 +3,7 @@ module.exports = function (app) {
     app.config(['$stateProvider', '$urlRouterProvider', routing]);
 
     function routing($stateProvider, $urlRouterProvider) {
-        
+
         $urlRouterProvider
             .otherwise('/');
 
@@ -11,7 +11,6 @@ module.exports = function (app) {
             .state('home', {
                 url: '/home',
                 data: {
-                    myCat: 'freddy',
                     requireLogin: true
                 },
                 views: {
@@ -20,21 +19,9 @@ module.exports = function (app) {
                         controller: 'homeController'
                     }
                 }
-            })
-            .state('home2', {
-                url: '/home2',
-                data: {
-                    requireLogin: false
-                },
-                views: {
-                    main: {
-                        template: require('./features/home2/home2.template.html'),
-                        controller: 'home2Controller'
-                    }
-                }
             });
     }
-
+    
     app.run(function ($rootScope, authUserService) {
 
         $rootScope.$on('$stateChangeStart', function (event, toState, toParams) {
@@ -43,9 +30,8 @@ module.exports = function (app) {
 
             if (requireLogin && !authUserService.user) {
                 event.preventDefault();
-                console.log('get the fuck outta here!');
+                console.log('get outta here!');
             }
         });
-
     });
 };
