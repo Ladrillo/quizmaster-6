@@ -66,7 +66,7 @@ module.exports = function () {
 
 
     // HERE WE PLUG PASSPORT MIDDLEWARE
-    require('./passport.js')(app);
+    // require('./passport.js')(app);
 
 
     // HERE WE INCLUDE THE ROUTES

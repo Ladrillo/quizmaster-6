@@ -7,8 +7,8 @@ var mongoose = require('./core/server/config/mongoose'),
     passport = require('./core/server/config/passport');
 
 
-var db = mongoose(),
-    app = express();
+// var db = mongoose();
+var app = express();
 
 
 app.listen(port, function () {
