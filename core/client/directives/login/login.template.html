@@ -1,3 +1,22 @@
-<div>
-    <div layout="row" layout-align="start center"><i class="material-icons">favorite</i><p>welcome, {{ user.displayName }}</p></div>
-</div>
+<md-toolbar>
+    <div class="md-toolbar-tools">
+        <span>Quizmaster</span>
+        <span flex></span>
+        <!--non authenticated user-->
+        <div ng-show="!user">
+            <md-button ng-hide="choosingStrategy" ng-click="chooseStrategy()">Login <i class="mdi mdi-login"></i></md-button>
+            <div ng-show="choosingStrategy">
+                <md-button class="md-raised md-warn login-button">
+                    <i class="mdi mdi-google-plus-box"></i> <a href="/auth/google">google</a>
+                </md-button>
+                <md-button class="md-raised md-warn login-button">
+                    <i class="mdi mdi-facebook-box"></i> facebook
+                </md-button>
+            </div>
+        </div>
+        <!--authenticated user-->
+        <div ng-show="user">
+            <md-button ng-hide="choosingStrategy"><a href="/auth/logout">Logout</a> <i class="mdi mdi-logout"></i></md-button>
+        </div>
+    </div>
+</md-toolbar>

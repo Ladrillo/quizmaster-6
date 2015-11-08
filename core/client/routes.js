@@ -5,13 +5,13 @@ module.exports = function (app) {
     function routing($stateProvider, $urlRouterProvider) {
 
         $urlRouterProvider
-            .otherwise('/');
+            .otherwise('/home');
 
         $stateProvider
             .state('home', {
                 url: '/home',
                 data: {
-                    requireLogin: true
+                    requireLogin: false
                 },
                 views: {
                     main: {
@@ -21,7 +21,7 @@ module.exports = function (app) {
                 }
             });
     }
-    
+
     app.run(function ($rootScope, authUserService) {
 
         $rootScope.$on('$stateChangeStart', function (event, toState, toParams) {

@@ -1,30 +1,23 @@
 module.exports = function (app) {
 
-    app.directive('quizLogin',
-        [   
-            '$state',
-            '$http',
-            '$rootScope',
-            'authUserService',
-            '$mdDialog',
-            quizLogin
-        ]);
+    app.directive('quizLogin', [quizLogin]);
 
-    function quizLogin(
-        $state,
-        $http,
-        $rootScope,
-        authUserService,
-        $mdDialog) {
+    function quizLogin() {
 
             return {
                 template: require('./login.template.html'),
 
+                scope: {
+                    user: "="
+                },
+
                 controller: function ($scope) {
 
-                    $scope.user = authUserService.user;
+                    $scope.choosingStrategy = false;
+                    $scope.chooseStrategy = function () {
+                        $scope.choosingStrategy = !$scope.choosingStrategy;
+                    };
                 }
             };
     }
-
 };
