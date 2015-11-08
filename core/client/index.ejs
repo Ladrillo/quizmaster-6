@@ -2,12 +2,13 @@
 <html lang="en">
 
 <head>
-    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/0.11.4/angular-material.min.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=RobotoDraft:300,400,500,700,400italic">
+    <title>Quizmaster 6</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/angular-material/0.11.4/angular-material.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="build/styles.css">
     <meta name="viewport" content="initial-scale=1" />
     <meta charset="UTF-8" />
-    <title>Quizmaster 6</title>
 </head>
 
 <body ng-app="app">
@@ -21,9 +22,11 @@
             <%= userJSON.email %>
         </div>
     <% } else { %>
-        <a ui-sref="home">home</a>
-        <a href="/auth/google">Sign in with your Google Account</a>
-        <h3>You are NOT authenticated.</h3>
+        <div>
+            <a ui-sref="home">home</a>
+            <a href="/auth/google">Sign in with your Google Account</a>
+            <h3>You are NOT authenticated.</h3>
+        </div>
     <% } %>
 
     <div ui-view="main"></div>
