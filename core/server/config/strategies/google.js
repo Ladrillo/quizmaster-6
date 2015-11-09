@@ -12,10 +12,12 @@ module.exports = function () {
             callbackURL: config.google.callbackURL
         },
 
-        function (req, accessToken, refreshToken, profile, done) {
+        function (accessToken, refreshToken, profile, done) {
+
             var query = { 'google.id': profile.id };
 
             User.findOne(query, function (error, user) {
+
                 if (user) {
                     console.log('Google user found in database: ', user);
                     done(null, user);
@@ -30,6 +32,8 @@ module.exports = function () {
                     user.google = {};
                     user.google.id = profile.id;
                     user.google.token = accessToken;
+
+                    console.log('new user created: ', user);
 
                     user.save();
                     done(null, user);

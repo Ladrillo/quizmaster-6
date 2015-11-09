@@ -2,9 +2,11 @@
     <div class="md-toolbar-tools">
         <span>Quizmaster</span>
         <span flex></span>
+
         <!--non authenticated user-->
         <div layout="row" ng-show="!user">
             <md-button ng-click="chooseStrategy()">Login <i class="mdi mdi-login"></i></md-button>
+            
             <div ng-show="choosingStrategy">
                 <md-button class="md-raised md-warn login-button">
                     <i class="mdi mdi-facebook-box"></i> <a href="/auth/facebook">facebook</a>
@@ -14,6 +16,7 @@
                 </md-button>
             </div>
         </div>
+
         <!--authenticated user-->
         <div ng-show="user">
             <md-button ng-hide="choosingStrategy"><a href="/auth/logout">Logout</a> <i class="mdi mdi-logout"></i></md-button>

@@ -20,8 +20,8 @@ module.exports = function () {
     // route is relative to server.js
     app.set('views', ['./core/client']);
     app.set('view engine', 'ejs');
-    
-    
+
+
     // this middleware will run no matter the environment
     app.use(cors());
 
@@ -38,8 +38,8 @@ module.exports = function () {
         resave: true,
         secret: config.sessionSecret
     }));
-    
-    
+
+
     // ENVIRONMENT DEPENDANT MIDDLEWARE
     if (process.env.NODE_ENV === 'development') {
         // Webpack
@@ -70,7 +70,6 @@ module.exports = function () {
 
 
     // HERE WE INCLUDE THE ROUTES
-    // we run the router objects giving them the express app
     require('../features/auth/oauth.server.routes')(app);
 
 

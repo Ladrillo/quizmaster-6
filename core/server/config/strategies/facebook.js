@@ -15,9 +15,7 @@ module.exports = function () {
             // profileFields: config.facebook.callbackURL.profileFields
         },
 
-        function (req, accessToken, refreshToken, profile, done) {
-
-            console.log(profile);
+        function (accessToken, refreshToken, profile, done) {
 
             var query = { 'facebook.id': profile.id };
 
@@ -29,8 +27,9 @@ module.exports = function () {
                 }
                 else {
                     console.log('Facebook user not found in database');
+                    console.log('profile: ', profile);
                     user = new User;
-                    user.email = profile.emails[0].value;
+                    // user.email = profile.emails ? profile.emails[0].value : "";
                     user.displayName = profile.displayName;
 
                     user.facebook = {};
