@@ -13,7 +13,11 @@ var UserSchema = new Schema({
     },
     google: {
         type: Object
+    },
+    facebook: {
+        type: Object
     }
+
 });
 
 module.exports = mongoose.model('User', UserSchema);

@@ -2,16 +2,16 @@ var config = require('../config'),
     passport = require('passport'),
     GoogleStrategy = require('passport-google-oauth').OAuth2Strategy,
     User = require('../../features/users/user.server.model');
-    
+
 module.exports = function () {
-    
+
     passport.use(new GoogleStrategy(
         {
             clientID: config.google.clientID,
             clientSecret: config.google.clientSecret,
             callbackURL: config.google.callbackURL
         },
-        
+
         function (req, accessToken, refreshToken, profile, done) {
             var query = { 'google.id': profile.id };
 
@@ -36,5 +36,4 @@ module.exports = function () {
                 }
             });
         }));
-
 };

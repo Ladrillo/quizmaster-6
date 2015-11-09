@@ -2,7 +2,7 @@ var passport = require('passport');
 
 module.exports = function (app) {
 
-    // GOOGLE AUTHENTICATION ROUTES
+    // GOOGLE AUTHENTICATION AND REDIRECTION
     app.route('/auth/google')
         .get(passport.authenticate('google', {
             scope: [
@@ -16,9 +16,22 @@ module.exports = function (app) {
             successRedirect: '/',
             failure: '/error/'
         }));
-        
 
-    // SUCCESS REDIRECT
+    // FACEBOOK AUTHENTICATION AND REDIRECTION
+
+    app.route('/auth/facebook')
+        .get(passport.authenticate('facebook', {
+            scope: ['email']
+        }));
+
+    app.route('/auth/facebook/oauth2redirect')
+        .get(passport.authenticate('facebook', {
+            successRedirect: '/',
+            failure: '/error/'
+        }));
+
+
+    // ROOT OF THE APPLICATION
     app.route('/')
         .get(function (req, res) {
             res.render('index', {
@@ -28,7 +41,10 @@ module.exports = function (app) {
         });
 
 
-    // CHECKING IF LOGIN
+
+    // AUXILIARY ENDPOINTS
+
+    // checking if logged-in
     app.route('/auth/checklogin')
         .get(function (req, res) {
             if (req.user) res.send(true);
@@ -36,7 +52,7 @@ module.exports = function (app) {
         });
 
 
-    // LOGING OUT
+    // logging-out
     app.route('/auth/logout')
         .get(function (req, res) {
             req.logout();
@@ -44,7 +60,7 @@ module.exports = function (app) {
         });
 
 
-    // PROTECTING ROUTES
+    // protecting routes
     app.route('/notallowed')
         .get(function (req, res, next) {
             if (!req.user) {
