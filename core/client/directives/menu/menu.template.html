@@ -1,7 +1,63 @@
-<md-menu-bar layout="row" layout-align="end center">
+<md-menu-bar ng-show="user" layout="row" layout-align="start center">
     <md-menu>
         <button ng-click="$mdOpenMenu()">
-            Actions
+            Quizzes
+        </button>
+        <md-menu-content width="2">
+            <md-menu-item>
+                <md-button ng-click="ctrl.sampleAction('share', $event)">
+                    Browse Quizes
+                </md-button>
+            </md-menu-item>
+            <md-menu-item>
+                <md-button ng-click="ctrl.sampleAction('share', $event)">
+                    Browse Tests
+                </md-button>
+            </md-menu-item>
+            <md-menu-item>
+                <md-button ng-click="ctrl.sampleAction('share', $event)">
+                    Create New Quiz
+                </md-button>
+            </md-menu-item>
+            <md-menu-divider></md-menu-divider>
+                <md-menu-item>
+                    <md-button ng-click="ctrl.sampleAction('share', $event)">
+                        Log Out
+                    </md-button>
+                </md-menu-item>
+        </md-menu-content>
+    </md-menu>
+    <md-menu>
+        <button ng-click="$mdOpenMenu()">
+            Tests
+        </button>
+        <md-menu-content width="2">
+            <md-menu-item>
+                <md-button ng-click="ctrl.sampleAction('share', $event)">
+                    Browse Quizes
+                </md-button>
+            </md-menu-item>
+            <md-menu-item>
+                <md-button ng-click="ctrl.sampleAction('share', $event)">
+                    Browse Tests
+                </md-button>
+            </md-menu-item>
+            <md-menu-item>
+                <md-button ng-click="ctrl.sampleAction('share', $event)">
+                    Create New Quiz
+                </md-button>
+            </md-menu-item>
+            <md-menu-divider></md-menu-divider>
+                <md-menu-item>
+                    <md-button ng-click="ctrl.sampleAction('share', $event)">
+                        Log Out
+                    </md-button>
+                </md-menu-item>
+        </md-menu-content>
+    </md-menu>
+    <md-menu>
+        <button ng-click="$mdOpenMenu()">
+            Stats
         </button>
         <md-menu-content width="2">
             <md-menu-item>
