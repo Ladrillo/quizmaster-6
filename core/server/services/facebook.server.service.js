@@ -12,20 +12,21 @@ var Facebook = function (facebookKey, facebookSecret) {
         null,
         'oauth2/token',
         null
-    );
+        );
 
-    var getEmail = function (userKey, done) {
+    var getFacebookData = function (userKey, done) {
 
-        oauth.get('https://graph.facebook.com/v2.5/me?fields=email',
-        userKey,
-        function (err, results, res) {
-            console.log('results service', results);
-            results = JSON.parse(results);
-            done(results);
-        });
+        oauth.get('https://graph.facebook.com/v2.5/me?fields=picture,email',
+            userKey,
+            function (err, results, res) {
+
+                results = JSON.parse(results);
+                done(results);
+            });
     };
+    
     return {
-        getEmail: getEmail
+        getFacebookData: getFacebookData
     };
 };
 

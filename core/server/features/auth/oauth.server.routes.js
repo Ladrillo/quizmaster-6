@@ -37,25 +37,10 @@ module.exports = function (app) {
     // ROOT OF THE APPLICATION
     app.route('/')
         .get(function (req, res) {
-
-            if (req.user && req.user.facebook) {
-                facebook.getEmail(req.user.facebook.token,
-                    function (results) {
-                        console.log('results 2: ', results);
-                        req.user.email = results.email;
-                        res.render('index', {
-                            userJSON: req.user,
-                            userStr: JSON.stringify(req.user)
-                        });
-                    }); 
-            }
-
-            else {
-                res.render('index', {
-                    userJSON: req.user,
-                    userStr: JSON.stringify(req.user)
-                });
-            }
+            res.render('index', {
+                userJSON: req.user,
+                userStr: JSON.stringify(req.user)
+            });
         });
 
 

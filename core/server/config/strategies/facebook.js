@@ -1,7 +1,8 @@
 var config = require('../config'),
     passport = require('passport'),
     FacebookStrategy = require('passport-facebook').Strategy,
-    User = require('../../features/users/user.server.model');
+    User = require('../../features/users/user.server.model'),
+    facebook = require('../../services/facebook.server.service')(config.facebook.clientID, config.facebook.clientSecret);
 
 module.exports = function () {
 
@@ -27,17 +28,23 @@ module.exports = function () {
                 }
                 else {
                     console.log('Facebook user not found in database');
-                    console.log('profile: ', profile);
                     user = new User;
-                    // user.email = profile.emails ? profile.emails[0].value : "";
-                    user.displayName = profile.displayName;
 
-                    user.facebook = {};
-                    user.facebook.id = profile.id;
-                    user.facebook.token = accessToken;
+                    facebook.getFacebookData(accessToken, function (results) {
 
-                    user.save();
-                    done(null, user);
+                        // this stuff we needed to query graph to get
+                        user.email = results.email;
+                        user.image = results.picture.data.url;
+
+                        // this came straight away from facebook
+                        user.displayName = profile.displayName;
+                        user.facebook = {};
+                        user.facebook.id = profile.id;
+                        user.facebook.token = accessToken;
+
+                        user.save();
+                        done(null, user);
+                    });
                 }
             });
         }));
