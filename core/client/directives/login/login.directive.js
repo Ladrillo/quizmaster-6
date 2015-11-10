@@ -4,20 +4,24 @@ module.exports = function (app) {
 
     function quizLogin() {
 
-            return {
-                template: require('./login.template.html'),
+        return {
+            template: require('./login.template.html'),
 
-                scope: {
-                    user: "="
-                },
+            scope: {
+                user: "="
+            },
 
-                controller: function ($scope) {
+            controller: function ($scope, $mdDialog) {
 
-                    $scope.choosingStrategy = false;
-                    $scope.chooseStrategy = function () {
-                        $scope.choosingStrategy = !$scope.choosingStrategy;
-                    };
-                }
-            };
+                $scope.choosingStrategy = false;
+                $scope.chooseStrategy = function () {
+                    $scope.choosingStrategy = !$scope.choosingStrategy;
+                };
+
+                // $scope.openMenu = function ($mdOpenMenu, ev) {
+                //     $mdOpenMenu(ev);
+                // };
+            }
+        };
     }
 };

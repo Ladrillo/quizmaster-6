@@ -1,0 +1,30 @@
+<md-menu-bar layout="row" layout-align="end center">
+    <md-menu>
+        <button ng-click="$mdOpenMenu()">
+            Actions
+        </button>
+        <md-menu-content width="2">
+            <md-menu-item>
+                <md-button ng-click="ctrl.sampleAction('share', $event)">
+                    Browse Quizes
+                </md-button>
+            </md-menu-item>
+            <md-menu-item>
+                <md-button ng-click="ctrl.sampleAction('share', $event)">
+                    Browse Tests
+                </md-button>
+            </md-menu-item>
+            <md-menu-item>
+                <md-button ng-click="ctrl.sampleAction('share', $event)">
+                    Create New Quiz
+                </md-button>
+            </md-menu-item>
+            <md-menu-divider></md-menu-divider>
+                <md-menu-item>
+                    <md-button ng-click="ctrl.sampleAction('share', $event)">
+                        Log Out
+                    </md-button>
+                </md-menu-item>
+        </md-menu-content>
+    </md-menu>
+</md-menu-bar>
