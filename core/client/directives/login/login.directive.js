@@ -17,10 +17,6 @@ module.exports = function (app) {
                 $scope.chooseStrategy = function () {
                     $scope.choosingStrategy = !$scope.choosingStrategy;
                 };
-
-                // $scope.openMenu = function ($mdOpenMenu, ev) {
-                //     $mdOpenMenu(ev);
-                // };
             }
         };
     }
