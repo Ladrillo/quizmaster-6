@@ -1,17 +1,17 @@
 <md-toolbar>
     <div class="md-toolbar-tools">
-        <span>Quizmaster</span>
+        <span ui-sref="home"><md-button>Quizmaster</md-button></span>
         <span flex></span>
 
         <!--non authenticated user-->
         <div layout="row" ng-show="!user">
             <md-button ng-click="chooseStrategy()">Login <i class="mdi mdi-login"></i></md-button>
-            
+
             <div ng-show="choosingStrategy">
-                <md-button class="md-raised md-warn login-button">
+                <md-button class="md-raised md-warn quiz-button-no-capital">
                     <i class="mdi mdi-facebook-box"></i> <a href="/auth/facebook">facebook</a>
                 </md-button>
-                <md-button class="md-raised md-warn login-button">
+                <md-button class="md-raised md-warn quiz-button-no-capital">
                     <i class="mdi mdi-google-plus-box"></i> <a href="/auth/google">google</a>
                 </md-button>
             </div>

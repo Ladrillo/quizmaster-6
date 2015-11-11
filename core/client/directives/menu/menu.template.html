@@ -5,19 +5,13 @@
         </button>
         <md-menu-content width="2">
             <md-menu-item>
-                <md-button ng-click="ctrl.sampleAction('share', $event)">
-                    My Quizes
-                </md-button>
+                 <md-button ui-sref="quizedit({quiz:'new'})">My Quizzes</md-button>
             </md-menu-item>
             <md-menu-item>
-                <md-button ng-click="ctrl.sampleAction('share', $event)">
-                    Browse All
-                </md-button>
+                 <md-button ui-sref="quizedit({quiz:'new'})">Browse All</md-button>
             </md-menu-item>
-            <md-menu-item>
-                <md-button ng-click="ctrl.sampleAction('share', $event)">
-                    <a ui-sref="quizedit({quiz:'new'})">Create New</a>
-                </md-button>
+             <md-menu-item>
+                <md-button ui-sref="quizedit({quiz:'new'})">Create New</md-button>
             </md-menu-item>
         </md-menu-content>
     </md-menu>
@@ -42,11 +36,11 @@
                 </md-button>
             </md-menu-item>
             <md-menu-divider></md-menu-divider>
-                <md-menu-item>
-                    <md-button ng-click="ctrl.sampleAction('share', $event)">
-                        Log Out
-                    </md-button>
-                </md-menu-item>
+            <md-menu-item>
+                <md-button ng-click="ctrl.sampleAction('share', $event)">
+                    Log Out
+                </md-button>
+            </md-menu-item>
         </md-menu-content>
     </md-menu>
     <md-menu>
@@ -70,11 +64,11 @@
                 </md-button>
             </md-menu-item>
             <md-menu-divider></md-menu-divider>
-                <md-menu-item>
-                    <md-button ng-click="ctrl.sampleAction('share', $event)">
-                        Log Out
-                    </md-button>
-                </md-menu-item>
+            <md-menu-item>
+                <md-button ng-click="ctrl.sampleAction('share', $event)">
+                    Log Out
+                </md-button>
+            </md-menu-item>
         </md-menu-content>
     </md-menu>
 </md-menu-bar>
