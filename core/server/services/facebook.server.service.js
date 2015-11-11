@@ -1,6 +1,6 @@
-var OAuth = require('OAuth').OAuth2;
+var OAuth = require('oauth').OAuth2;
 
-var Facebook = function (facebookKey, facebookSecret) {
+module.exports = function (facebookKey, facebookSecret) {
 
     var key = facebookKey,
         secret = facebookSecret;
@@ -24,11 +24,8 @@ var Facebook = function (facebookKey, facebookSecret) {
                 done(results);
             });
     };
-    
+
     return {
         getFacebookData: getFacebookData
     };
 };
-
-
-module.exports = Facebook;
