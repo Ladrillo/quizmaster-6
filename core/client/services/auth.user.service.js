@@ -9,6 +9,6 @@ module.exports = function (app) {
     function authUserService($rootScope) {
 
         this.user = window.user;
-        console.log(this.user);
+        // console.log(this.user);
     }
 };

@@ -6,25 +6,19 @@
         <md-menu-content width="2">
             <md-menu-item>
                 <md-button ng-click="ctrl.sampleAction('share', $event)">
-                    Browse Quizes
+                    My Quizes
                 </md-button>
             </md-menu-item>
             <md-menu-item>
                 <md-button ng-click="ctrl.sampleAction('share', $event)">
-                    Browse Tests
+                    Browse All
                 </md-button>
             </md-menu-item>
             <md-menu-item>
                 <md-button ng-click="ctrl.sampleAction('share', $event)">
-                    Create New Quiz
+                    <a ui-sref="quizedit({quiz:'new'})">Create New</a>
                 </md-button>
             </md-menu-item>
-            <md-menu-divider></md-menu-divider>
-                <md-menu-item>
-                    <md-button ng-click="ctrl.sampleAction('share', $event)">
-                        Log Out
-                    </md-button>
-                </md-menu-item>
         </md-menu-content>
     </md-menu>
     <md-menu>

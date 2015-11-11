@@ -1,0 +1,24 @@
+<!--<quiz-login user="user"></quiz-login>
+<quiz-menu user="user"></quiz-menu>-->
+
+<md-content layout="column" layout-margin layout-padding layout-fill>
+    <h3 class="md-display-1">Edit Quiz</h3>
+    <md-divider></md-divider>
+    <md-tabs md-dynamic-height="true">
+        <md-tab label="Labeling">
+            <md-content layout-sm="column" layout-gt-sm="row" layout-margin layout-padding>
+            </md-content>
+        </md-tab>
+
+
+        <md-tab label="Content">
+            <div layout="row" layout-align="end center">
+            <md-button ng-show="!isQuizNew()" class="md-raised md-warn" ng-click="updateQuiz()">Update quiz</md-button>
+            <md-button ng-show="isQuizNew()" class="md-raised md-warn" ng-click="createQuiz()">Create quiz</md-button>
+        </div>
+            <md-content layout-lg="column" layout-gt-lg="row" layout-margin layout-padding>
+
+            </md-content>
+        </md-tab>
+    </md-tabs>
+</md-content>

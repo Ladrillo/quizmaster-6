@@ -8,6 +8,7 @@ var app = angular.module('app',  [uiRouter, angularMaterial]);
 
 // features
 require('./features/home/')(app);
+// require('./features/quizedit/')(app);
 
 // routes
 require('./routes')(app);

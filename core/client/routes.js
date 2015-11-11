@@ -19,8 +19,21 @@ module.exports = function (app) {
                         controller: 'homeController'
                     }
                 }
+            })
+            .state('quizedit', {
+                url: '/quizzes/:quiz',
+                data: {
+                    requireLogin: true
+                },
+                views: {
+                    main: {
+                        template: require('./features/quizedit/quizedit.template.html'),
+                        controller: 'quizeditController'
+                    }
+                }
             });
     }
+
 
     app.run(function ($rootScope, authUserService) {
 
