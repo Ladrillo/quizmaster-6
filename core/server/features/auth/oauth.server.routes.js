@@ -1,6 +1,6 @@
 var config = require('../../config/config'),
-    passport = require('passport'),
-    facebook = require('../../services/facebook.server.service')(config.facebook.clientID, config.facebook.clientSecret);
+    passport = require('passport');
+    
 
 module.exports = function (app) {
 

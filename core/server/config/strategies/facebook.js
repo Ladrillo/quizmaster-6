@@ -32,7 +32,7 @@ module.exports = function () {
 
                     facebook.getFacebookData(accessToken, function (results) {
 
-                        // this stuff we needed to query graph to get
+                        // this stuff is why we needed to query graph
                         user.email = results.email;
                         user.image = results.picture.data.url;
 

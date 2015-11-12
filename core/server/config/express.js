@@ -1,5 +1,8 @@
 // EXPRESS CONFIGURATION FILE
 var config = require('./config'),
+    environment = process.env.NODE_ENV,
+    
+    // middleware 
     express = require('express'),
     cors = require('cors'),
     bodyParser = require('body-parser'),
@@ -7,7 +10,7 @@ var config = require('./config'),
     session = require('express-session'),
     webpack = require('webpack'),
     passport = require('passport'),
-    // these modules are loaded later, depending on environment
+    // middleware that is required later, depending on environment
     webpackConfig, webpackMiddleware, morgan, compress;
 
 
@@ -41,7 +44,7 @@ module.exports = function () {
 
 
     // ENVIRONMENT DEPENDANT MIDDLEWARE
-    if (process.env.NODE_ENV === 'development') {
+    if (environment === 'development') {
         // Webpack
         webpackMiddleware = require('webpack-dev-middleware');
         webpackConfig = require('../../../webpack.config');
@@ -56,7 +59,7 @@ module.exports = function () {
         morgan = require('morgan'),
         app.use(morgan('dev'));
     }
-    else if ((process.env.NODE_ENV === 'production')) {
+    else if ((environment === 'production')) {
         // Webpack
         webpackConfig = require('../../../webpack-p.config');
         // the rest
@@ -71,6 +74,7 @@ module.exports = function () {
 
     // HERE WE INCLUDE THE ROUTES
     require('../features/auth/oauth.server.routes')(app);
+    require('../features/quiz/quiz.server.routes')(app);
 
 
     // THIS WILL BE ANGULAR APP

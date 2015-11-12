@@ -1,6 +1,7 @@
-var Quiz = require('mongoose').model('Quiz');
+var Quiz = require('./quiz.server.model');
 
 exports.postQuiz = function (req, res, next) {
+    
     var quiz = new Quiz(req.body);
     quiz.save(function (err) {
         if (err) res.send(err);
@@ -9,7 +10,8 @@ exports.postQuiz = function (req, res, next) {
 };
 
 
-exports.getQuizzes = function (req, res) {
+exports.getQuizzes = function (req, res, next) {
+    
     Quiz.find({})
         .populate('user')
         .exec(function (err, quizzes) {
@@ -19,7 +21,8 @@ exports.getQuizzes = function (req, res) {
 };
 
 
-exports.getOneQuiz = function (req, res) {
+exports.getOneQuiz = function (req, res, next) {
+    
     Quiz.findById(req.params.id)
         .populate('user')
         .exec(function (err, quiz) {
@@ -29,7 +32,8 @@ exports.getOneQuiz = function (req, res) {
 };
 
 
-exports.putQuiz = function (req, res) {
+exports.putQuiz = function (req, res, next) {
+    
     Quiz.findById(req.params.id)
         .exec(function (err, quiz) {
             if (err) res.status(500).send(err);
@@ -46,7 +50,8 @@ exports.putQuiz = function (req, res) {
 };
 
 
-exports.deleteQuiz = function (req, res) {
+exports.deleteQuiz = function (req, res, next) {
+    
     Quiz.findById(req.params.id)
         .remove(function (err) {
             if (err) res.status(500).send(err);
