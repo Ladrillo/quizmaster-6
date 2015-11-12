@@ -23,7 +23,7 @@ module.exports = function (app) {
             .state('quizedit', {
                 url: '/quizzes/:quiz',
                 data: {
-                    requireLogin: true
+                    requireLogin: false
                 },
                 views: {
                     main: {

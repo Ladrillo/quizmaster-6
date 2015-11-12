@@ -1,10 +1,11 @@
 // libraries and auxiliary modules
 var angular = require('angular');
 var uiRouter = require('angular-ui-router');
+var ngMessages = require('angular-messages');
 var angularMaterial = require('angular-material');
 
 // main module with dependencies
-var app = angular.module('app', [uiRouter, angularMaterial]);
+var app = angular.module('app', [uiRouter, angularMaterial, ngMessages]);
 
 // services
 require('./services/auth.user.service')(app);

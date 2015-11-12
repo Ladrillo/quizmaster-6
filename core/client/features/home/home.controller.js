@@ -20,6 +20,7 @@ module.exports = function (app) {
         $mdDialog) {
 
         $scope.user = authUserService.user;
+
     }
 
 };

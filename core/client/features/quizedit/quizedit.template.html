@@ -1,24 +1,70 @@
 <quiz-login user="user"></quiz-login>
 <quiz-menu user="user"></quiz-menu>
 
-<md-content layout="column" layout-margin layout-padding layout-fill>
-    <h3 class="md-display-1">Edit Quiz</h3>
-    <md-divider></md-divider>
-    <md-tabs md-dynamic-height="true">
-        <md-tab label="Labeling">
-            <md-content layout-sm="column" layout-gt-sm="row" layout-margin layout-padding>
-            </md-content>
-        </md-tab>
+
+<md-card>
+    <md-card-content>
+
+        <!--<md-content layout="column" layout-margin layout-padding layout-fill> -->
+        <h3 class="md-display-1">{{ creatingOrUpdating }} Quiz</h3>
+
+        <md-content layout-lg="column" layout-gt-lg="row" layout-margin layout-padding>
+
+            <h2 class="md-title">Instructions and Stem</h2>
+            <form name="instructionsForm">
+                <md-input-container class="md-block">
+                    <label>Instructions</label>
+                    <input required name="instructions" ng-model="quizInProgress.instructions" minlength="3" maxlength="200">
+                    <div ng-messages="instructionsForm.instructions.$error" role="alert">
+                        <div ng-message-exp="['required', 'minlength', 'maxlength']">
+                            Please type clear instructions
+                        </div>
+                    </div>
+                </md-input-container>
+                <md-input-container class="md-block">
+                    <label>stem</label>
+                    <input required name="stem" ng-model="quizInProgress.stem" minlength="3" maxlength="200">
+                    <div ng-messages="instructionsForm.stem.$error" role="alert">
+                        <div ng-message-exp="['required', 'minlength', 'maxlength']">
+                            Please type the stem of the question
+                        </div>
+                    </div>
+                </md-input-container>
+            </form>
+
+        </md-content>
 
 
-        <md-tab label="Content">
-            <div layout="row" layout-align="end center">
-            <md-button ng-show="!isQuizNew()" class="md-raised md-warn" ng-click="updateQuiz()">Update quiz</md-button>
-            <md-button ng-show="isQuizNew()" class="md-raised md-warn" ng-click="createQuiz()">Create quiz</md-button>
+
+        <md-content layout-lg="column" layout-gt-lg="row" layout-margin layout-padding>
+            <h2 class="md-title">Truthy Answers</h2>
+             <form ng-submit="addToTruthies()" name="truthyForm">
+                <md-input-container class="md-block">
+                    <label>Truthy Answer</label>
+                    <input required name="truthyAnswer" ng-model="tempTruthy" minlength="3" maxlength="200">
+                    <div ng-messages="truthyForm.truthyAnswer.$error" role="alert">
+                        <div ng-message-exp="['required', 'minlength', 'maxlength']">
+                            Please type the Truth
+                        </div>
+                    </div>
+                </md-input-container>
+                <!--<input type="submit" style="position: absolute; left: -9999px; width: 1px; height: 1px;"/>-->
+            </form>
+        </md-content>
+
+
+
+        <md-content layout-lg="column" layout-gt-lg="row" layout-margin layout-padding>
+
+            <h2 class="md-title">Tags</h2>
+            <md-chips ng-model="quizInProgress.tags" readonly="readOnly"></md-chips>
+
+        </md-content>
+
+        <div class="md-actions" layout="row" layout-align="end center">
+            <md-button ng-click="logQuizInProgress()">Log Quiz in Progress</md-button>
+            <md-button ng-click="createOrUpdateQuiz()">{{ creatingOrUpdating }} Quiz</md-button>
         </div>
-            <md-content layout-lg="column" layout-gt-lg="row" layout-margin layout-padding>
 
-            </md-content>
-        </md-tab>
-    </md-tabs>
-</md-content>
+    </md-card-content>
+</md-card>

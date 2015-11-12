@@ -5,7 +5,7 @@
 
         <!--non authenticated user-->
         <div layout="row" ng-show="!user">
-            <md-button ng-click="chooseStrategy()">Login <i class="mdi mdi-login"></i></md-button>
+            <md-button ng-hide="choosingStrategy" ng-click="chooseStrategy()">Login <i class="mdi mdi-login"></i></md-button>
 
             <div ng-show="choosingStrategy">
                 <md-button class="md-raised md-warn quiz-button-no-capital">
@@ -16,6 +16,7 @@
                 </md-button>
             </div>
         </div>
+
 
         <!--authenticated user-->
         <div ng-show="user">

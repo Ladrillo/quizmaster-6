@@ -8,7 +8,8 @@ module.exports = function (app) {
             template: require('./login.template.html'),
 
             scope: {
-                user: "="
+                user: "=",
+                shit: "="
             },
 
             controller: function ($scope, $mdDialog) {
