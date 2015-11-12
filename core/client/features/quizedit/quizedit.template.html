@@ -37,19 +37,21 @@
 
 
         <md-content layout-lg="column" layout-gt-lg="row" layout-margin layout-padding>
+
             <h2 class="md-title">Truthy Answers</h2>
-             <form ng-submit="addToTruthies()" name="truthyForm">
+            <form ng-submit="addToTruthies(tempTruthy)" name="truthyForm">
                 <md-input-container class="md-block">
                     <label>Truthy Answer</label>
                     <input required name="truthyAnswer" ng-model="tempTruthy" minlength="3" maxlength="200">
-                    <div ng-messages="truthyForm.truthyAnswer.$error" role="alert">
-                        <div ng-message-exp="['required', 'minlength', 'maxlength']">
-                            Please type the Truth
-                        </div>
-                    </div>
                 </md-input-container>
+                <md-list>
+                    <md-list-item ng-repeat="truthy in truthies">
+                        {{ truthy }}
+                    </md-list-item>
+                </md-list>
                 <!--<input type="submit" style="position: absolute; left: -9999px; width: 1px; height: 1px;"/>-->
             </form>
+            
         </md-content>
 
 

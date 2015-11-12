@@ -37,8 +37,10 @@ module.exports = function (app) {
         $scope.tempTruthy = "";
         $scope.truthies = [];
 
-        $scope.addToTruthies = function () {
-            $scope.truthies.push($scope.tempTruthy);
+        $scope.addToTruthies = function (truthy) {
+            if ($scope.truthies.indexOf(truthy) === -1) {
+                $scope.truthies.push(truthy);
+            }
             $scope.tempTruthy = "";
         };
 
