@@ -27,8 +27,6 @@ module.exports = function () {
 
 
     // this middleware will run no matter the environment
-    app.use(methodOverride());
-
     app.use(cors());
 
     app.use(bodyParser.json());
@@ -36,6 +34,8 @@ module.exports = function () {
         {
             extended: true
         }));
+
+    app.use(methodOverride());
 
     app.use(session({
         saveUninitialized: true,
