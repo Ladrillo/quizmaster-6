@@ -10,6 +10,7 @@ var config = require('./config'),
     session = require('express-session'),
     webpack = require('webpack'),
     passport = require('passport'),
+    
     // middleware that is required later, depending on environment
     webpackConfig, webpackMiddleware, morgan, compress;
 
@@ -26,6 +27,8 @@ module.exports = function () {
 
 
     // this middleware will run no matter the environment
+    app.use(methodOverride());
+
     app.use(cors());
 
     app.use(bodyParser.json());
@@ -33,8 +36,6 @@ module.exports = function () {
         {
             extended: true
         }));
-
-    app.use(methodOverride());
 
     app.use(session({
         saveUninitialized: true,
@@ -45,6 +46,7 @@ module.exports = function () {
 
     // ENVIRONMENT DEPENDANT MIDDLEWARE
     if (environment === 'development') {
+        
         // Webpack
         webpackMiddleware = require('webpack-dev-middleware');
         webpackConfig = require('../../../webpack.config');
@@ -55,13 +57,17 @@ module.exports = function () {
                 colors: true
             }
         }));
+        
         // the rest
         morgan = require('morgan'),
         app.use(morgan('dev'));
     }
+
     else if ((environment === 'production')) {
+        
         // Webpack
         webpackConfig = require('../../../webpack-p.config');
+        
         // the rest
         compress = require('compression');
         app.use(compress());
