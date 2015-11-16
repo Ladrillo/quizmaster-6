@@ -1,14 +1,9 @@
 module.exports = function (app) {
 
-    app.service('quizService',
-        [
-            '$q',
-            '$http',
-            '$rootScope',
-            quizService
-        ]);
+    app.service('quizService', ['$q', '$http', quizService]);
 
-    function quizService($q, $http, $rootScope) {
+
+    function quizService($q, $http) {
 
         this.createQuiz = function (quiz) {
 
@@ -20,6 +15,7 @@ module.exports = function (app) {
                 });
         };
 
+
         this.listAllQuizzes = function () {
 
             return $http.get('/api/quizzes')
@@ -29,6 +25,7 @@ module.exports = function (app) {
                     return data.data;
                 });
         };
+
 
         this.destroyQuiz = function (quizId) {
 

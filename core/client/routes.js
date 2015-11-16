@@ -6,6 +6,7 @@ module.exports = function (app) {
 
         $urlRouterProvider
             .otherwise('/home');
+            
 
         $stateProvider
             .state('home', {
@@ -20,6 +21,7 @@ module.exports = function (app) {
                     }
                 }
             })
+
             .state('quizedit', {
                 url: '/quizzes/:quiz',
                 data: {

@@ -5,7 +5,6 @@ module.exports = function (app) {
             '$scope',
             '$state',
             '$http',
-            '$rootScope',
             'authUserService',
             '$mdDialog',
             homeController
@@ -15,7 +14,6 @@ module.exports = function (app) {
         $scope,
         $state,
         $http,
-        $rootScope,
         authUserService,
         $mdDialog) {
 

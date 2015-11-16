@@ -1,8 +1,10 @@
 // EXPRESS CONFIGURATION FILE
+
+
 var config = require('./config'),
     environment = process.env.NODE_ENV,
-    
-    // middleware 
+
+    // middleware
     express = require('express'),
     cors = require('cors'),
     bodyParser = require('body-parser'),
@@ -10,7 +12,7 @@ var config = require('./config'),
     session = require('express-session'),
     webpack = require('webpack'),
     passport = require('passport'),
-    
+
     // middleware that is required later, depending on environment
     webpackConfig, webpackMiddleware, morgan, compress;
 
@@ -46,7 +48,7 @@ module.exports = function () {
 
     // ENVIRONMENT DEPENDANT MIDDLEWARE
     if (environment === 'development') {
-        
+
         // Webpack
         webpackMiddleware = require('webpack-dev-middleware');
         webpackConfig = require('../../../webpack.config');
@@ -57,17 +59,17 @@ module.exports = function () {
                 colors: true
             }
         }));
-        
+
         // the rest
         morgan = require('morgan'),
         app.use(morgan('dev'));
     }
 
     else if ((environment === 'production')) {
-        
+
         // Webpack
         webpackConfig = require('../../../webpack-p.config');
-        
+
         // the rest
         compress = require('compression');
         app.use(compress());

@@ -4,7 +4,6 @@ module.exports = function (app) {
         [
             '$scope',
             '$stateParams',
-            '$rootScope',
             'authUserService',
             'quizService',
             '$mdDialog',
@@ -14,7 +13,6 @@ module.exports = function (app) {
     function quizeditController(
         $scope,
         $stateParams,
-        $rootScope,
         authUserService,
         quizService,
         $mdDialog) {
