@@ -7,5 +7,5 @@ var User = require('./user.server.model'),
 
 
 
-request.post('http://service.com/upload', {form:{key:'value'}})
+// request.post('http://service.com/upload', {form:{key:'value'}})
 

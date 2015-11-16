@@ -3,9 +3,6 @@ var Quiz = require('./quiz.server.model');
 exports.postQuiz = function (req, res, next) {
 
     var quiz = new Quiz(req.body);
-
-    console.log(req.route);
-
     quiz.save(function (err) {
 
         if (err) res.send(err);
@@ -19,8 +16,6 @@ exports.getQuizzes = function (req, res, next) {
     Quiz.find({})
         .populate('creator')
         .exec(function (err, quizzes) {
-
-            console.log(req.route);
 
             if (err) res.status(500).send(err);
             else res.json(quizzes);
@@ -43,6 +38,7 @@ exports.getOneQuiz = function (req, res, next) {
 exports.putQuiz = function (req, res, next) {
 
     Quiz.findById(req.params.id)
+        .populate('creator')
         .exec(function (err, quiz) {
 
             if (err) res.status(500).send(err);
@@ -62,9 +58,21 @@ exports.putQuiz = function (req, res, next) {
 exports.deleteQuiz = function (req, res, next) {
 
     Quiz.findById(req.params.id)
-        .remove(function (err) {
+        .populate('creator')
+        .exec(function (err, quiz) {
 
-            if (err) res.status(500).send(err);
-            else res.status(204).send('Removed');
+            var user = JSON.stringify(req.user._id),
+                creator = JSON.stringify(quiz.creator._id);
+
+            if (user === creator) {
+                quiz.remove(function (err) {
+
+                    if (err) res.status(500).send(err);
+                    else res.status(204).send('Removed');
+                });
+            }
+            else {
+                res.send('You can\'t delete a quiz that\'s not yours!');
+            }
         });
 };

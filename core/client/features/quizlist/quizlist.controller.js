@@ -23,14 +23,28 @@ module.exports = function (app) {
         // authentication
         $scope.user = authUserService.user;
 
-        $scope.test = 'test';
 
-        $scope.listAllQuizzes = quizService.listAllQuizzes()
-            .then(function (response) {
-                console.log(response);
-                $scope.quizzes = response;
-            });
+        $scope.listAllQuizzes = function () {
+
+            quizService.listAllQuizzes()
+                .then(function (response) {
+
+                    $scope.quizzes = response;
+                });
+        };
+
+        $scope.listAllQuizzes();
+
+
+        $scope.destroyQuiz = function (id) {
+
+            quizService.destroyQuiz(id)
+                .then(function (response) {
+
+                    $scope.listAllQuizzes();
+                });
+        };
+
 
     }
-
 };

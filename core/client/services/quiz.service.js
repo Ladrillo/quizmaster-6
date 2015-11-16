@@ -25,7 +25,17 @@ module.exports = function (app) {
             return $http.get('/api/quizzes')
                 .then(function (data) {
 
+                    console.log(data.data);
                     return data.data;
+                });
+        };
+
+        this.destroyQuiz = function (quizId) {
+
+            return $http.delete('/api/quizzes/' + quizId)
+                .then(function (data) {
+
+                    console.log(data);
                 });
         };
     }

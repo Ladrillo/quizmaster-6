@@ -6,15 +6,6 @@ module.exports = function (app) {
 
         return {
             template: require('./quiztile.template.html'),
-
-            scope: {
-                user: "=",
-                quiz: "="
-            },
-
-            controller: function ($scope) {
-
-            }
         };
     }
 };
