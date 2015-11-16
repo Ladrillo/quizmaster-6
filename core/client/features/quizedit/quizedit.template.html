@@ -43,7 +43,7 @@
                     <input name="truthyAnswer" ng-model="tempTruthy" minlength="3" maxlength="200">
                 </md-input-container>
                 <md-list>
-                    <md-list-item ng-repeat="truthy in truthies">
+                    <md-list-item ng-repeat="truthy in quizInProgress.truthies">
                         <span ng-click="editOption(truthy, 'truthy')">{{ truthy }}</span>
                     </md-list-item>
                 </md-list>
@@ -60,7 +60,7 @@
                     <input name="falsyAnswer" ng-model="tempFalsy" minlength="3" maxlength="200">
                 </md-input-container>
                 <md-list>
-                    <md-list-item ng-repeat="falsy in falsies">
+                    <md-list-item ng-repeat="falsy in quizInProgress.falsies">
                         <span ng-click="editOption(falsy, 'falsy')">{{ falsy }}</span>
                     </md-list-item>
                 </md-list>
@@ -78,7 +78,10 @@
         <div class="md-actions" layout="row" layout-align="end center">
             <md-button ng-click="logQuizInProgress()">Log Quiz in Progress</md-button>
             <md-button ng-click="createOrUpdateQuiz()">{{ creatingOrUpdating }} Quiz</md-button>
+            <md-button ng-click="listAllQuizzes()">List All Quizzes</md-button>
         </div>
 
     </md-card-content>
 </md-card>
+
+{{ quizInProgress }}

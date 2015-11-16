@@ -1,5 +1,6 @@
 // ENVIRONMENT VARIABLES
 module.exports = {
+    siteUrl: "https://pure-dusk-8896.herokuapp.com",
     db: "mongodb://user:password@ds037814.mongolab.com:37814/quizmaster-6",
     sessionSecret: "productionSessionSecret",
     google: {

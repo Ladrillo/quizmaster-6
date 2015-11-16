@@ -16,8 +16,11 @@ var UserSchema = new Schema({
     },
     facebook: {
         type: Object
+    },
+    stats: {
+        type: Object,
+        default: {}
     }
-
 });
 
 module.exports = mongoose.model('User', UserSchema);

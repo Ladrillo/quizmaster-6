@@ -11,12 +11,4 @@ module.exports = function (app) {
         .get(Ctrl.getOneQuiz)
         .put(Ctrl.putQuiz)
         .delete(Ctrl.deleteQuiz);
-
-    app.route('/copon')
-        .get(function (req, res, next) {
-            res.send(true);
-            console.log(req.url);
-        });
-
-
 };

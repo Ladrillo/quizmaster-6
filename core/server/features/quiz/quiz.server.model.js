@@ -9,39 +9,44 @@ var QuizSchema = new Schema({
         type: String,
     },
 
-    // stem: {
-    //     required: true,
-    //     trim: true,
-    //     type: String,
-    // },
+    stem: {
+        required: true,
+        trim: true,
+        type: String,
+    },
 
-    // truthies: {
-    //     required: true,
-    //     trim: true,
-    //     type: [String]
-    // },
+    truthies: {
+        required: true,
+        trim: true,
+        type: [String]
+    },
 
-    // falsies: {
-    //     required: true,
-    //     trim: true,
-    //     type: [String]
-    // },
+    falsies: {
+        required: true,
+        trim: true,
+        type: [String]
+    },
 
-    // tags: {
-    //     required: true,
-    //     trim: true,
-    //     type: [String]
-    // },
+    tags: {
+        required: true,
+        trim: true,
+        type: [String]
+    },
 
-    // created: {
-    //     type: Date,
-    //     default: Date.now
-    // },
+    created: {
+        type: Date,
+        default: Date.now
+    },
 
-    // creator: {
-    //     type: Schema.Types.ObjectId,
-    //     ref: 'User',
-    // }
+    creator: {
+        type: Schema.Types.ObjectId,
+        ref: 'User',
+    },
+
+    stats: {
+        type: Object,
+        default: {}
+    }
 
 });
 

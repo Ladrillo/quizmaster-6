@@ -1,5 +1,6 @@
 // ENVIRONMENT VARIABLES
 module.exports = {
+    siteUrl: "http://localhost:5000",
     db: "mongodb://user:password@ds037814.mongolab.com:37814/quizmaster-6",
     sessionSecret: "developmentSessionSecret",
     google: {

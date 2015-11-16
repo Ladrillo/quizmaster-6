@@ -7,6 +7,7 @@ module.exports = function (app) {
             '$http',
             '$rootScope',
             'authUserService',
+            'quizService',
             '$mdDialog',
             quizeditController
         ]);
@@ -17,19 +18,29 @@ module.exports = function (app) {
         $http,
         $rootScope,
         authUserService,
+        quizService,
         $mdDialog) {
-            
+
 
         // authentication
         $scope.user = authUserService.user;
-        
-        
-        // new or edit logic
-        $scope.quizInProgress = $scope.quizInProgress || { tags: [] };
 
+
+        // new or edit logic
         if ($stateParams.quiz === 'new') {
             $scope.creatingOrUpdating = 'New';
+
+            $scope.quizInProgress = {
+                instructions: "",
+                stem: "",
+                truthies: [],
+                falsies: [],
+                tags: [],
+                stats: {},
+                creator: $scope.user._id
+            };
         }
+
         else {
             $scope.creatingOrUpdating = 'Edit';
         }
@@ -39,13 +50,8 @@ module.exports = function (app) {
 
 
         // truthy and falsy block
-        $scope.tempTruthy = "";
-        $scope.tempFalsy = "";
-        $scope.truthies = [];
-        $scope.falsies = [];
-
-        var truthies = $scope.truthies,
-            falsies = $scope.falsies;
+        var truthies = $scope.quizInProgress.truthies,
+            falsies = $scope.quizInProgress.falsies;
 
         $scope.addToOptions = function (option, i) {
 
@@ -76,12 +82,31 @@ module.exports = function (app) {
         };
 
 
+        // crud operations
+        $scope.createOrUpdateQuiz = function () {
+
+            if ($scope.creatingOrUpdating === 'New') {
+                quizService.createQuiz($scope.quizInProgress)
+                    .then(function (response) {
+                        console.log(response);
+                    });
+            }
+        };
+
+        $scope.listAllQuizzes = function () {
+
+            quizService.listAllQuizzes()
+                .then(function (response) {
+
+                    console.log(response);
+                });
+        };
+
+
         // debugging
         $scope.logQuizInProgress = function () {
-            $scope.quizInProgress.truthies = $scope.truthies;
-            $scope.quizInProgress.falsies = $scope.falsies;
-            console.log($scope.quizInProgress);
-        };
+                console.log($scope.quizInProgress);
+            };
     }
 
 };

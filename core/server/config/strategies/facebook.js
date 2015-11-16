@@ -28,6 +28,7 @@ module.exports = function () {
                 }
                 else {
                     console.log('Facebook user not found in database');
+
                     user = new User;
 
                     facebook.getFacebookData(accessToken, function (results) {
