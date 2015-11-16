@@ -13,10 +13,12 @@ require('./services/auth.user.service')(app);
 // directives
 require('./directives/login/login.directive')(app);
 require('./directives/menu/menu.directive')(app);
+require('./directives/quiztile/quiztile.directive')(app);
 
 // features
 require('./features/home/')(app);
 require('./features/quizedit/')(app);
+require('./features/quizlist/')(app);
 
 // routes
 require('./routes')(app);

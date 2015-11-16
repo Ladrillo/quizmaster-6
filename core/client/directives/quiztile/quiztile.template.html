@@ -1,0 +1,36 @@
+<md-card>
+    <img ng-src="{{quiz.creator.image}}" class="md-card-image" alt="{{ quiz.creator.displayName }}">
+    <md-card-content>
+        <md-subheader>{{ quiz.instructions }}</md-subheader>
+        <h4 class="md-headline">{{ quiz.stem }}</h4>
+        <p ng-repeat="truthy in quiz.truthies">{{ truthy }}</p>
+        <p ng-repeat="falsy in quiz.falsies">{{ falsy }}</p>
+    </md-card-content>
+    <md-divider></md-divider>
+    <md-card-footer layout="row" layout-align="space-between center">
+        <div class="md-actions" layout="row" layout-align="start center">
+            <md-button class="md-primary md-button" ui-sref="quizedit({id:quiz._id})">Edit</md-button>
+            <md-button class="md-raised md-warn" ng-click="removeQuiz(quiz)">Delete</md-button>
+        </div>
+        <md-checkbox ng-model="quiz.checked" ng-click="toggleChecked(quiz)" aria-label="quiz"></md-checkbox>
+    </md-card-footer>
+</md-card>
+
+
+<!--<md-list class="quizcard">
+    <md-list-item>
+        <h4 class="md-headline">{{ quiz.stem }}</h4>
+    </md-list-item>
+    <md-list-item ng-repeat="truthy in quiz.truthies" class="md-2-line">
+        <div class="md-list-item-text">
+            <h3>{{ truthy }}</h3>
+        </div>
+    </md-list-item>
+    <md-list-item ng-repeat="falsy in quiz.falsies" class="md-2-line">
+        <div class="md-list-item-text">
+            <h3>{{ falsy }}</h3>
+        </div>
+    </md-list-item>
+</md-list>-->
+
+<!--checked: {{ quiz.checked }}-->

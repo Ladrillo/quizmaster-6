@@ -31,6 +31,19 @@ module.exports = function (app) {
                         controller: 'quizeditController'
                     }
                 }
+            })
+
+            .state('quizlist', {
+                url: '/quizzes',
+                data: {
+                    requireLogin: false
+                },
+                views: {
+                    main: {
+                        template: require('./features/quizlist/quizlist.template.html'),
+                        controller: 'quizlistController'
+                    }
+                }
             });
     }
 

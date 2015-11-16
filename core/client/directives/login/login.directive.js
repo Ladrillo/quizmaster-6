@@ -9,7 +9,6 @@ module.exports = function (app) {
 
             scope: {
                 user: "=",
-                shit: "="
             },
 
             controller: function ($scope, $mdDialog) {
