@@ -3,22 +3,25 @@ module.exports = function (app) {
     app.controller('quizlistController',
         [
             '$scope',
+            '$state',
             '$stateParams',
             'authUserService',
             'quizService',
+            'appstate',
             '$mdDialog',
             quizlistController
         ]);
 
     function quizlistController(
         $scope,
+        $state,
         $stateParams,
         authUserService,
         quizService,
+        appstate,
         $mdDialog) {
 
 
-        // authentication
         $scope.user = authUserService.user;
 
 
@@ -41,6 +44,13 @@ module.exports = function (app) {
 
                     $scope.listAllQuizzes();
                 });
+        };
+
+
+        $scope.editQuiz = function (quiz) {
+            
+            appstate.setCurrentQuiz(quiz);
+            $state.go('quizedit', { quiz: quiz._id });
         };
 
 

@@ -6,6 +6,7 @@ module.exports = function (app) {
             '$stateParams',
             'authUserService',
             'quizService',
+            'appstate',
             '$mdDialog',
             quizeditController
         ]);
@@ -15,6 +16,7 @@ module.exports = function (app) {
         $stateParams,
         authUserService,
         quizService,
+        appstate,
         $mdDialog) {
 
 
@@ -39,6 +41,7 @@ module.exports = function (app) {
 
         else {
             $scope.creatingOrUpdating = 'Edit';
+            $scope.quizInProgress = appstate.getCurrentQuiz();
         }
 
         // required for chips to work
