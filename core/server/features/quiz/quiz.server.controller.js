@@ -45,7 +45,7 @@ exports.putQuiz = function (req, res, next) {
             else {
                 var user = JSON.stringify(req.user._id),
                     creator = JSON.stringify(quiz.creator._id);
-
+                        
                 if (user === creator) {
                     quiz.tags = req.body.tags;
                     quiz.instructions = req.body.instructions;
