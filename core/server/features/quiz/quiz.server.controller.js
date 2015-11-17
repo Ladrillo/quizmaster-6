@@ -43,13 +43,24 @@ exports.putQuiz = function (req, res, next) {
 
             if (err) res.status(500).send(err);
             else {
-                quiz.tags = req.body.tags;
-                quiz.instructions = req.body.instructions;
-                quiz.stem = req.body.stem;
-                quiz.truthies = req.body.truthies;
-                quiz.falsies = req.body.falsies;
-                quiz.save();
-                res.json(quiz);
+                var user = JSON.stringify(req.user._id),
+                    creator = JSON.stringify(quiz.creator._id);
+
+                if (user === creator) {
+                    quiz.tags = req.body.tags;
+                    quiz.instructions = req.body.instructions;
+                    quiz.stem = req.body.stem;
+                    quiz.truthies = req.body.truthies;
+                    quiz.falsies = req.body.falsies;
+                    quiz.save(function (err) {
+
+                        if (err) res.status(500).send(err);
+                        else res.status(204).json(quiz);
+                    });
+                }
+                else {
+                    res.send('You can\'t edit a quiz that\'s not yours!');
+                }
             }
         });
 };
@@ -61,18 +72,21 @@ exports.deleteQuiz = function (req, res, next) {
         .populate('creator')
         .exec(function (err, quiz) {
 
-            var user = JSON.stringify(req.user._id),
-                creator = JSON.stringify(quiz.creator._id);
-
-            if (user === creator) {
-                quiz.remove(function (err) {
-
-                    if (err) res.status(500).send(err);
-                    else res.status(204).send('Removed');
-                });
-            }
+            if (err) res.status(500).send(err);
             else {
-                res.send('You can\'t delete a quiz that\'s not yours!');
+                var user = JSON.stringify(req.user._id),
+                    creator = JSON.stringify(quiz.creator._id);
+
+                if (user === creator) {
+                    quiz.remove(function (err) {
+
+                        if (err) res.status(500).send(err);
+                        else res.status(204).send('Removed');
+                    });
+                }
+                else {
+                    res.send('You can\'t delete a quiz that\'s not yours!');
+                }
             }
         });
 };

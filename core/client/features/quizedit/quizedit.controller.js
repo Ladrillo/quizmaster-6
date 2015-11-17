@@ -3,6 +3,7 @@ module.exports = function (app) {
     app.controller('quizeditController',
         [
             '$scope',
+            '$state',
             '$stateParams',
             'authUserService',
             'quizService',
@@ -13,6 +14,7 @@ module.exports = function (app) {
 
     function quizeditController(
         $scope,
+        $state,
         $stateParams,
         authUserService,
         quizService,
@@ -40,7 +42,7 @@ module.exports = function (app) {
         }
 
         else {
-            $scope.creatingOrUpdating = 'Edit';
+            $scope.creatingOrUpdating = 'Update';
             $scope.quizInProgress = appstate.getCurrentQuiz();
         }
 
@@ -87,7 +89,18 @@ module.exports = function (app) {
             if ($scope.creatingOrUpdating === 'New') {
                 quizService.createQuiz($scope.quizInProgress)
                     .then(function (response) {
-                        console.log(response);
+
+                        $state.go('quizlist');
+                        // console.log(response);
+
+                    });
+            }
+            else if ($scope.creatingOrUpdating === 'Update') {
+                quizService.updateQuiz($scope.quizInProgress)
+                    .then(function (response) {
+
+                        $state.go('quizlist');
+                        // console.log(response);
                     });
             }
         };
@@ -100,12 +113,12 @@ module.exports = function (app) {
                     console.log(response);
                 });
         };
-
-
+        
+ 
         // debugging
         $scope.logQuizInProgress = function () {
-                console.log($scope.quizInProgress);
-            };
+            console.log($scope.quizInProgress);
+        };
     }
 
 };

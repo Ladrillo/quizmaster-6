@@ -35,5 +35,15 @@ module.exports = function (app) {
                     console.log(data);
                 });
         };
+
+
+        this.updateQuiz = function (quiz) {
+
+            return $http.put('/api/quizzes/' + quiz._id, quiz)
+                .then(function (data) {
+                    
+                    console.log(data);
+                });
+        };
     }
 };
