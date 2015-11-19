@@ -8,8 +8,8 @@
         <md-card-content>
             <md-subheader>{{ quiz.instructions }}</md-subheader>
             <h4 class="md-headline">{{ quiz.stem }}</h4>
-            <p ng-repeat="truthy in quiz.truthies">{{ truthy }}</p>
-            <p ng-repeat="falsy in quiz.falsies">{{ falsy }}</p>
+            <p ng-repeat="truthy in quiz.truthies"><i class="mdi mdi-check"></i> {{ truthy }}</p>
+            <p ng-repeat="falsy in quiz.falsies"><i class="mdi mdi-close"></i> {{ falsy }}</p>
         </md-card-content>
         <md-divider></md-divider>
         <md-card-footer layout="row" layout-align="space-between center">
