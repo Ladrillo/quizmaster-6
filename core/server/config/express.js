@@ -83,6 +83,7 @@ module.exports = function () {
     // HERE WE INCLUDE THE ROUTES
     require('../features/auth/oauth.server.routes')(app);
     require('../features/quiz/quiz.server.routes')(app);
+    // require('../features/test/test.server.routes')(app);
 
 
     // THIS WILL BE ANGULAR APP

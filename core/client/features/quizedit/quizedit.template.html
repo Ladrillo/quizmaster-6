@@ -5,12 +5,12 @@
 <md-card>
     <md-card-content>
 
-        <!--<md-content layout="column" layout-margin layout-padding layout-fill> -->
+        <!--<md-content layout="column" layout-margin layout-padding > -->
         <h3 class="md-display-1">{{ creatingOrUpdating }} Quiz</h3>
 
         <md-content layout-lg="column" layout-gt-lg="row" layout-margin layout-padding>
 
-            <md-card>
+            <md-card layout-fill>
                 <md-card-content>
                     <h2 class="md-title">Instructions and Stem</h2>
                     <form name="instructionsForm">
@@ -40,7 +40,7 @@
 
         <md-content layout-lg="column" layout-gt-lg="row" layout-margin layout-padding>
 
-            <md-card>
+            <md-card layout-fill >
                 <md-card-content>
                     <h2 class="md-title">Truthy Answers</h2>
                     <form ng-submit="addToOptions(tempTruthy, 'truthy')" name="truthyForm">
@@ -61,7 +61,7 @@
 
         <md-content layout-lg="column" layout-gt-lg="row" layout-margin layout-padding>
 
-            <md-card>
+            <md-card layout-fill >
                 <md-card-content>
                     <h2 class="md-title">Falsy Answers</h2>
                     <form ng-submit="addToOptions(tempFalsy, 'falsy')" name="falsyForm">
@@ -82,7 +82,7 @@
 
         <md-content layout-lg="column" layout-gt-lg="row" layout-margin layout-padding>
 
-            <md-card>
+            <md-card layout-fill >
                 <md-card-content>
                     <h2 class="md-title">Tags</h2>
                     <md-chips ng-model="quizInProgress.tags" readonly="readOnly"></md-chips>
@@ -101,4 +101,4 @@
     </md-card-content>
 </md-card>
 
-{{ quizInProgress }}
+<!--{{ quizInProgress }}-->
