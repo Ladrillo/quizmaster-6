@@ -26,14 +26,6 @@ module.exports = function (app) {
 
         $scope.user = authUserService.user;
 
-        // var findCurrentUser = function () {
-        //     authUserService.user()
-        //         .then(function (response) {
-        //             $scope.user = response;
-        //         });
-        // };
-
-
 
         // new or edit logic
         if ($stateParams.quiz === 'new') {
@@ -113,15 +105,6 @@ module.exports = function (app) {
                     });
             }
         };
-//
-//         $scope.listAllQuizzes = function () {
-//
-//             quizService.listAllQuizzes()
-//                 .then(function (response) {
-//
-//                     console.log(response);
-//                 });
-//         };
 
 
         // debugging

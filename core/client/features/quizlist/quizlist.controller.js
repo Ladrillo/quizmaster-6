@@ -25,7 +25,14 @@ module.exports = function (app) {
 
         // grabbing user
         $scope.user = authUserService.user;
-        console.log('window.user', $scope.user);
+
+        if ($stateParams.mine === 'true') {
+            $scope.display = true;
+        }
+        else if ($stateParams.mine === 'false') {
+            $scope.display = false;
+        }
+
 
         function listQuizzes() {
             userService.listOneUser($scope.user)
