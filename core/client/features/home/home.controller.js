@@ -17,8 +17,7 @@ module.exports = function (app) {
         authUserService,
         $mdDialog) {
 
-        $scope.user = authUserService.user;
-
+            $scope.user = authUserService.user;
     }
 
 };

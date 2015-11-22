@@ -12,6 +12,7 @@ var app = angular.module('app', [uiRouter, angularMaterial, ngMessages]);
 // services
 require('./services/auth.user.service')(app);
 require('./services/appstate.service')(app);
+require('./services/user.service')(app);
 require('./services/quiz.service')(app);
 
 

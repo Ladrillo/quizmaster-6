@@ -23,7 +23,16 @@ module.exports = function (app) {
 
 
         // authentication
+
         $scope.user = authUserService.user;
+
+        // var findCurrentUser = function () {
+        //     authUserService.user()
+        //         .then(function (response) {
+        //             $scope.user = response;
+        //         });
+        // };
+
 
 
         // new or edit logic
@@ -104,17 +113,17 @@ module.exports = function (app) {
                     });
             }
         };
+//
+//         $scope.listAllQuizzes = function () {
+//
+//             quizService.listAllQuizzes()
+//                 .then(function (response) {
+//
+//                     console.log(response);
+//                 });
+//         };
 
-        $scope.listAllQuizzes = function () {
 
-            quizService.listAllQuizzes()
-                .then(function (response) {
-
-                    console.log(response);
-                });
-        };
-        
- 
         // debugging
         $scope.logQuizInProgress = function () {
             console.log($scope.quizInProgress);

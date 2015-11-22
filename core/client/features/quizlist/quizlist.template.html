@@ -14,13 +14,18 @@
         <md-divider></md-divider>
         <md-card-footer layout-align="space-between center">
             <div>
-                <md-checkbox ng-model="quiz.checked" ng-click="toggleChecked(quiz)" aria-label="quiz">Include in test</md-checkbox>
+                <md-checkbox ng-model="quiz.isSelected" ng-click="addOrRemoveFromSelectedQuizzes(quiz)" aria-label="quiz">Include in test</md-checkbox>
             </div>
-            <md-divider></md-divider><br>
+            <md-divider></md-divider>
+            <br>
             <div class="md-actions" layout="row">
                 <md-button class="md-primary md-button" ng-click="editQuiz(quiz)">Edit</md-button>
                 <md-button class="md-raised md-warn" ng-click="destroyQuiz(quiz._id)">Delete</md-button>
             </div>
         </md-card-footer>
+        {{ quiz.isSelected }}
     </md-card>
 </div>
+
+{{ user }}
+

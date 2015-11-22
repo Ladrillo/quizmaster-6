@@ -6,7 +6,7 @@ module.exports = function (app) {
 
         $urlRouterProvider
             .otherwise('/home');
-            
+
 
         $stateProvider
             .state('home', {

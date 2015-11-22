@@ -1,7 +1,7 @@
 var config = require('../config'),
     passport = require('passport'),
     GoogleStrategy = require('passport-google-oauth').OAuth2Strategy,
-    User = require('../../features/users/user.server.model');
+    User = require('../../features/user/user.server.model');
 
 module.exports = function () {
 

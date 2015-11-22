@@ -17,6 +17,10 @@ var UserSchema = new Schema({
     facebook: {
         type: Object
     },
+    editing: [{
+        type: Schema.Types.ObjectId,
+        ref: 'Quiz'
+    }],
     stats: {
         type: Object,
         default: {}
