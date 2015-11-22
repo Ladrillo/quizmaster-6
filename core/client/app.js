@@ -32,4 +32,4 @@ require('./routes')(app);
 
 
 // debugging
-console.log('app loaded, hoorray!');
+console.log('app loaded, txoopie!');

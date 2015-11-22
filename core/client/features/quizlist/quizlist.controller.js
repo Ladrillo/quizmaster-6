@@ -24,35 +24,35 @@ module.exports = function (app) {
         $mdDialog) {
 
         // grabbing user
-
         $scope.user = authUserService.user;
+        console.log('window.user', $scope.user);
 
-        var findCurrentUser = function () {
-            authUserService.user()
+        function listQuizzes() {
+            userService.listOneUser($scope.user)
                 .then(function (response) {
-                    $scope.user = response;
+
+                    $scope.selectedQuizzesIds = response.editing;
+
+                    quizService.listAllQuizzes()
+                        .then(function (response) {
+
+                            $scope.quizzes = response;
+
+                            if ($scope.selectedQuizzesIds.length > 0) {
+                                for (var i in $scope.quizzes) {
+                                    if ($scope.selectedQuizzesIds.indexOf($scope.quizzes[i]._id) !== -1) {
+                                        $scope.quizzes[i].isSelected = true;
+                                    }
+                                }
+                            }
+                        });
+
                 });
         };
+        listQuizzes();
 
 
         // crud operations
-        $scope.listAllQuizzes = function () {
-
-            quizService.listAllQuizzes()
-                .then(function (response) {
-
-                    var quizzes = response;
-                    for (var i in quizzes) {
-                        if ($scope.user.editing.indexOf(quizzes[i]._id) !== -1) {
-                            quizzes[i].isSelected = true;
-                        }
-                    }
-                    $scope.quizzes = quizzes;
-                });
-        };
-        $scope.listAllQuizzes();
-
-
         $scope.editQuiz = function (quiz) {
 
             appstate.setCurrentQuiz(quiz);
@@ -65,15 +65,20 @@ module.exports = function (app) {
             quizService.destroyQuiz(id)
                 .then(function (response) {
 
-                    $scope.listAllQuizzes();
+                    listQuizzes();
                 });
         };
 
 
         // checkbox hell
+
         $scope.addOrRemoveFromSelectedQuizzes = function (quiz) {
 
-            userService.patchUser(quiz, $scope.user);
+            userService.updateSelected(quiz, $scope.user)
+                .then(function (response) {
+
+                    listQuizzes();
+                });
         };
     }
 };

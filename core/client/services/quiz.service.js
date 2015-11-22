@@ -21,7 +21,7 @@ module.exports = function (app) {
             return $http.get('/api/quizzes')
                 .then(function (data) {
 
-                    console.log(data.data);
+                    // console.log(data.data);
                     return data.data;
                 });
         };
@@ -41,7 +41,7 @@ module.exports = function (app) {
 
             return $http.put('/api/quizzes/' + quiz._id, quiz)
                 .then(function (data) {
-                    
+
                     console.log(data);
                 });
         };
