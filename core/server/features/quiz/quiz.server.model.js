@@ -4,33 +4,32 @@ var mongoose = require('mongoose'),
 var QuizSchema = new Schema({
 
     instructions: {
+        type: String,
         required: true,
         trim: true,
-        type: String,
+        minlength: 1
     },
 
     stem: {
+        type: String,
         required: true,
         trim: true,
-        type: String,
+        minlength: 1
     },
 
     truthies: {
-        required: true,
-        trim: true,
-        type: [String]
+        type: [{ type: String, trim: true, minlength: 1 }],
+        required: true
     },
 
     falsies: {
-        required: true,
-        trim: true,
-        type: [String]
+        type: [{ type: String, trim: true, minlength: 1 }],
+        required: true
     },
 
     tags: {
-        required: true,
-        trim: true,
-        type: [String]
+        type: [{ type: String, trim: true, minlength: 1 }],
+        required: true
     },
 
     created: {

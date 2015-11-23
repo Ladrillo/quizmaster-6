@@ -47,6 +47,7 @@ module.exports = function (app) {
             $scope.quizInProgress = appstate.getCurrentQuiz();
         }
 
+
         // required for chips to work
         $scope.readOnly = false;
 
@@ -57,7 +58,7 @@ module.exports = function (app) {
 
         $scope.addToOptions = function (option, i) {
 
-            if (option !== "" && truthies.indexOf(option) === -1 && falsies.indexOf(option) === -1) {
+            if (option.length > 0 && truthies.indexOf(option) === -1 && falsies.indexOf(option) === -1) {
                 if (i === 'truthy') {
                     truthies.push(option);
                     $scope.tempTruthy = "";
@@ -85,24 +86,40 @@ module.exports = function (app) {
 
 
         // crud operations
+
+        function validateQuizInProgress(quiz) {
+
+            if (
+                quiz.instructions.length > 0 &&
+                quiz.stem.length > 0 &&
+                quiz.truthies.length > 0 &&
+                quiz.falsies.length > 0 &&
+                quiz.tags.length > 0
+                ) return true;
+            return false;
+        }
+
         $scope.createOrUpdateQuiz = function () {
+            var validates = validateQuizInProgress($scope.quizInProgress);
+            console.log(validates);
+            if (true) {
+                if ($scope.creatingOrUpdating === 'New') {
+                    quizService.createQuiz($scope.quizInProgress)
+                        .then(function (response) {
 
-            if ($scope.creatingOrUpdating === 'New') {
-                quizService.createQuiz($scope.quizInProgress)
-                    .then(function (response) {
+                            $state.go('quizlist', { mine: 'true' });
+                            // console.log(response);
 
-                        $state.go('quizlist');
-                        // console.log(response);
+                        });
+                }
+                else if ($scope.creatingOrUpdating === 'Update') {
+                    quizService.updateQuiz($scope.quizInProgress)
+                        .then(function (response) {
 
-                    });
-            }
-            else if ($scope.creatingOrUpdating === 'Update') {
-                quizService.updateQuiz($scope.quizInProgress)
-                    .then(function (response) {
-
-                        $state.go('quizlist');
-                        // console.log(response);
-                    });
+                            $state.go('quizlist');
+                            // console.log(response);
+                        });
+                }
             }
         };
 

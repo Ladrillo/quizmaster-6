@@ -1,9 +1,10 @@
 var Quiz = require('./quiz.server.model');
 
+
 exports.postQuiz = function (req, res, next) {
 
     var quiz = new Quiz(req.body);
-    quiz.save(function (err) {
+    quiz.save(function (err, quiz) {
 
         if (err) res.send(err);
         else res.json(quiz);
@@ -45,7 +46,7 @@ exports.putQuiz = function (req, res, next) {
             else {
                 var user = JSON.stringify(req.user._id),
                     creator = JSON.stringify(quiz.creator._id);
-                        
+
                 if (user === creator) {
                     quiz.tags = req.body.tags;
                     quiz.instructions = req.body.instructions;
