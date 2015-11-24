@@ -1,4 +1,5 @@
 var Quiz = require('./quiz.server.model');
+var qs = require('qs');
 
 
 exports.postQuiz = function (req, res, next) {
@@ -90,4 +91,13 @@ exports.deleteQuiz = function (req, res, next) {
                 }
             }
         });
+};
+
+
+exports.getSelectedQuizzes = function (req, res, next) {
+
+
+
+
+
 };

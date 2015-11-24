@@ -1,4 +1,4 @@
 module.exports = function (app) {
 
-    require('./quizlist.controller')(app);
+    require('./testlist.controller')(app);
 };

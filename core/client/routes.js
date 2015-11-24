@@ -36,7 +36,7 @@ module.exports = function (app) {
             })
 
             .state('quizlist', {
-                url: '/quizzes?mine',
+                url: '/quizzes?display',
                 data: {
                     requireLogin: false
                 },

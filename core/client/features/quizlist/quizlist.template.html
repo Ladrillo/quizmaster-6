@@ -3,7 +3,7 @@
 
 
 <div layout="row">
-    <md-card ng-show="display ? quiz.creator._id === user._id : quiz.creator._id !== user._id" ng-repeat="quiz in quizzes">
+    <md-card ng-show="display ? quiz.creator._id === user._id : quiz.creator" ng-repeat="quiz in quizzes">
         <img ng-src="{{quiz.creator.image}}" class="md-card-image" alt="{{ quiz.creator.displayName }}">
         <md-card-content>
             <md-subheader>{{ quiz.instructions }}</md-subheader>
@@ -16,9 +16,9 @@
             <div>
                 <md-checkbox ng-model="quiz.isSelected" ng-click="addOrRemoveFromSelectedQuizzes(quiz)" aria-label="quiz">Include in test</md-checkbox>
             </div>
-            <div ng-show="quiz.creator._id === user._id" class="md-actions" layout="row">
-                <md-button class="md-primary md-button" ng-click="editQuiz(quiz)">Edit</md-button>
-                <md-button class="md-raised md-warn" ng-click="destroyQuiz(quiz._id)">Delete</md-button>
+            <div class="md-actions" layout="row">
+                <md-button ng-disabled="quiz.creator._id !== user._id" class="md-primary md-button" ng-click="editQuiz(quiz)">Edit</md-button>
+                <md-button ng-disabled="quiz.creator._id !== user._id" class="md-raised md-warn" ng-click="destroyQuiz(quiz._id)">Delete</md-button>
             </div>
         </md-card-footer>
         <!--{{ quiz.isSelected }}-->

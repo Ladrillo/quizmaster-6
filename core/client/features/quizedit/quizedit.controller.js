@@ -100,9 +100,10 @@ module.exports = function (app) {
         }
 
         $scope.createOrUpdateQuiz = function () {
+
             var validates = validateQuizInProgress($scope.quizInProgress);
-            console.log(validates);
-            if (true) {
+
+            if (validates) {
                 if ($scope.creatingOrUpdating === 'New') {
                     quizService.createQuiz($scope.quizInProgress)
                         .then(function (response) {
@@ -116,7 +117,7 @@ module.exports = function (app) {
                     quizService.updateQuiz($scope.quizInProgress)
                         .then(function (response) {
 
-                            $state.go('quizlist');
+                            $state.go('quizlist', { mine: 'true' });
                             // console.log(response);
                         });
                 }

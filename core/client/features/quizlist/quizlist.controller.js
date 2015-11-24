@@ -25,14 +25,9 @@ module.exports = function (app) {
 
         // grabbing user
         $scope.user = authUserService.user;
-
-        if ($stateParams.mine === 'true') {
-            $scope.display = true;
-        }
-        else if ($stateParams.mine === 'false') {
-            $scope.display = false;
-        }
-
+        
+        $stateParams.display === 'mine' ? $scope.display = true : $scope.display = false;
+        
 
         function listQuizzes() {
             userService.listOneUser($scope.user)
@@ -56,7 +51,7 @@ module.exports = function (app) {
 
                 });
         }
-        listQuizzes();
+        listQuizzes();  
 
 
         // crud operations

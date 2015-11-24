@@ -11,4 +11,7 @@ module.exports = function (app) {
         .get(Ctrl.getOneQuiz)
         .put(Ctrl.putQuiz)
         .delete(Ctrl.deleteQuiz);
+
+    app.route('/api/quizzes/selected')
+        .post(Ctrl.getSelectedQuizzes);
 };
