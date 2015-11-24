@@ -109,7 +109,6 @@ module.exports = function (app) {
                         .then(function (response) {
 
                             $state.go('quizlist', { mine: 'true' });
-                            // console.log(response);
 
                         });
                 }
@@ -118,7 +117,6 @@ module.exports = function (app) {
                         .then(function (response) {
 
                             $state.go('quizlist', { mine: 'true' });
-                            // console.log(response);
                         });
                 }
             }
