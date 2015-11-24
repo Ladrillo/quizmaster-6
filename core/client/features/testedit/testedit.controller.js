@@ -23,23 +23,30 @@ module.exports = function (app) {
         appstate,
         $mdDialog) {
 
-        var listQuizzesEditing = function () {
+        $scope.user = authUserService.user;
+
+
+        function listQuizzesEditing() {
 
             $scope.selectedQuizzes = [];
 
             userService.listOneUser($scope.user)
                 .then(function (response) {
-                    $scope.selectedQuizzesIds = response.editing;
 
-                    $scope.selectedQuizzesIds.forEach(function (q) {
+                    var selectedQuizzesIds = { editing: response.editing };
 
+                    quizService.listQuizzesEditing(selectedQuizzesIds)
+                        .then(function (response) {
 
-
-                    });
+                            $scope.editingQuizzes = response;
+                            for (var i in $scope.editingQuizzes) {
+                                $scope.editingQuizzes[i].isSelected = true;
+                            }
+                        });
                 });
-
-
-        };
+        }
+        listQuizzesEditing();
+        
         
         // checkbox hell
 

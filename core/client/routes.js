@@ -46,6 +46,19 @@ module.exports = function (app) {
                         controller: 'quizlistController'
                     }
                 }
+            })
+            
+            .state('testedit', {
+                url: '/tests/:test',
+                data: {
+                    requireLogin: false
+                },
+                views: {
+                    main: {
+                        template: require('./features/testedit/testedit.template.html'),
+                        controller: 'testeditController'
+                    }
+                }
             });
     }
 

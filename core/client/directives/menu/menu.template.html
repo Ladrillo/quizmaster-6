@@ -5,12 +5,12 @@
         </button>
         <md-menu-content width="2">
             <md-menu-item>
-                 <md-button ui-sref="quizlist({display:'mine'})">Browse Mine</md-button>
+                <md-button ui-sref="quizlist({display:'mine'})">Browse Mine</md-button>
             </md-menu-item>
             <md-menu-item>
-                 <md-button ui-sref="quizlist({display:'all'})">Browse All</md-button>
+                <md-button ui-sref="quizlist({display:'all'})">Browse All</md-button>
             </md-menu-item>
-             <md-menu-item>
+            <md-menu-item>
                 <md-button ui-sref="quizedit({quiz:'new'})">Create New</md-button>
             </md-menu-item>
         </md-menu-content>
@@ -21,9 +21,7 @@
         </button>
         <md-menu-content width="2">
             <md-menu-item>
-                <md-button ng-click="ctrl.sampleAction('share', $event)">
-                    Browse Quizes
-                </md-button>
+                <md-button ui-sref="testedit({test:'new'})">Create New</md-button>
             </md-menu-item>
             <md-menu-item>
                 <md-button ng-click="ctrl.sampleAction('share', $event)">

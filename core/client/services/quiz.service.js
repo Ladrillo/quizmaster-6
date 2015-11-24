@@ -45,5 +45,15 @@ module.exports = function (app) {
                     console.log(data);
                 });
         };
+
+
+        this.listQuizzesEditing = function (editing) {
+
+            return $http.post('/api/quizzes/editing', editing)
+                .then(function (data) {
+                    console.log(data.data);
+                    return data.data;
+                });
+        };
     }
 };

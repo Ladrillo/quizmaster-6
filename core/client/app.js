@@ -25,6 +25,7 @@ require('./directives/menu/menu.directive')(app);
 require('./features/home/')(app);
 require('./features/quizedit/')(app);
 require('./features/quizlist/')(app);
+require('./features/testedit/')(app);
 
 
 // routes

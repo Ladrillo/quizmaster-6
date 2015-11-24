@@ -94,10 +94,12 @@ exports.deleteQuiz = function (req, res, next) {
 };
 
 
-exports.getSelectedQuizzes = function (req, res, next) {
+exports.quizzesEditing = function (req, res, next) {
 
-
-
-
-
+    Quiz.find({ '_id': { $in: req.body.editing } })
+        .populate('creator')
+        .exec(function (err, quizzes) {
+            if (err) res.status(500).send(err);
+            else res.json(quizzes);
+        });
 };
