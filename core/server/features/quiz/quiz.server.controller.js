@@ -1,5 +1,4 @@
 var Quiz = require('./quiz.server.model');
-var qs = require('qs');
 
 
 exports.postQuiz = function (req, res, next) {
