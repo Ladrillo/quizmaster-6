@@ -86,20 +86,6 @@ module.exports = function () {
     require('../features/user/user.server.routes')(app);
 
 
-    app.route('/api/pene?')
-        .get(function (req, res, next) {
-            res.send('mierda');
-        });
-
-    app.route('/api/pene')
-        .get(function (req, res, next) {
-            res.send('hola');
-        });
-
-
-
-
-
     // THIS WILL BE ANGULAR APP
     // needs to come after setting the rendering engine
     app.use(express.static('./core/client'));
