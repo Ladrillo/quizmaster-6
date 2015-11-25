@@ -6,7 +6,10 @@ module.exports = function (app) {
 
         var state = {
             currentQuiz: {},
-            // currentTest: {},
+            stateFrom: {
+                state: "",
+                params: {}
+            }
         };
 
 
@@ -14,9 +17,16 @@ module.exports = function (app) {
             return state.currentQuiz;
         };
 
-
         this.setCurrentQuiz = function (quiz) {
             state.currentQuiz = quiz;
+        };
+
+        this.setStateFrom = function (stateFrom) {
+            state.stateFrom = stateFrom;
+        };
+
+        this.getStateFrom = function () {
+            return state.stateFrom;
         };
     }
 };

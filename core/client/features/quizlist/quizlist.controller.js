@@ -26,8 +26,25 @@ module.exports = function (app) {
         // grabbing user
         $scope.user = authUserService.user;
 
-        if ($stateParams.display === 'mine') $scope.display = true;
-        else $scope.display = false;
+
+        if ($stateParams.display === 'mine') {
+            $scope.displayMine = true;
+            appstate.setStateFrom({
+                state: 'quizlist',
+                params: {
+                    display: 'mine'
+                }
+            });
+        }
+        else if ($stateParams.display === 'all') {
+            $scope.displayMine = false;
+            appstate.setStateFrom({
+                state: 'quizlist',
+                params: {
+                    display: 'all'
+                }
+            });
+        }
 
 
         function listQuizzes() {

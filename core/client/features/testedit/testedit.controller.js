@@ -25,6 +25,15 @@ module.exports = function (app) {
 
         $scope.user = authUserService.user;
 
+        if ($stateParams.test === 'new') {
+            appstate.setStateFrom({
+                state: 'testedit',
+                params: {
+                    test: 'new'
+                }
+            });
+        }
+
 
         function listQuizzesEditing() {
 
@@ -46,6 +55,24 @@ module.exports = function (app) {
                 });
         }
         listQuizzesEditing();
+
+
+        // crud operations
+        $scope.editQuiz = function (quiz) {
+
+            appstate.setCurrentQuiz(quiz);
+            $state.go('quizedit', { quiz: quiz._id });
+        };
+
+
+        $scope.destroyQuiz = function (id) {
+
+            quizService.destroyQuiz(id)
+                .then(function (response) {
+
+                    listQuizzesEditing();
+                });
+        };
 
 
         // pushing or splicing a quiz from the user's editing array

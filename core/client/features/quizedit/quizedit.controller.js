@@ -26,6 +26,8 @@ module.exports = function (app) {
 
         $scope.user = authUserService.user;
 
+        var stateFrom = appstate.getStateFrom();
+
 
         // new or edit logic
         if ($stateParams.quiz === 'new') {
@@ -108,7 +110,7 @@ module.exports = function (app) {
                     quizService.createQuiz($scope.quizInProgress)
                         .then(function (response) {
 
-                            $state.go('quizlist', { mine: 'true' });
+                            $state.go(stateFrom.state, stateFrom.params);
 
                         });
                 }
@@ -116,7 +118,7 @@ module.exports = function (app) {
                     quizService.updateQuiz($scope.quizInProgress)
                         .then(function (response) {
 
-                            $state.go('quizlist', { mine: 'true' });
+                            $state.go(stateFrom.state, stateFrom.params);
                         });
                 }
             }
