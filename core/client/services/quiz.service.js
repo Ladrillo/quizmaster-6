@@ -10,7 +10,7 @@ module.exports = function (app) {
             return $http.post('/api/quizzes', quiz)
                 .then(function (data) {
 
-                    console.log(data);
+                    console.log('quizService.createQuiz: ', data);
                     return "quiz created";
                 });
         };

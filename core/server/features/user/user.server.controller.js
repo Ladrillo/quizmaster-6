@@ -6,6 +6,7 @@ exports.getUsers = function (req, res, next) {
 
     User.find({})
         .exec(function (err, users) {
+
             if (err) res.status(500).send(err);
             else res.json(users);
         });
@@ -38,7 +39,6 @@ exports.patchUser = function (req, res, next) {
                         else {
                             user.editing.splice(user.editing.indexOf(quiz._id), 1);
                         }
-
                         user.save(function (err, user) {
 
                             if (err) res.status(500).send(err);

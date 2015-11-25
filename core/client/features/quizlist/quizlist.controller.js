@@ -25,10 +25,10 @@ module.exports = function (app) {
 
         // grabbing user
         $scope.user = authUserService.user;
-        
+
         if ($stateParams.display === 'mine') $scope.display = true;
         else $scope.display = false;
-        
+
 
         function listQuizzes() {
             userService.listOneUser($scope.user)
@@ -41,6 +41,7 @@ module.exports = function (app) {
 
                             $scope.quizzes = response;
 
+                            // programatically setting checkboxes of any selected quizzes
                             if ($scope.selectedQuizzesIds.length > 0) {
                                 for (var i in $scope.quizzes) {
                                     if ($scope.selectedQuizzesIds.indexOf($scope.quizzes[i]._id) !== -1) {
@@ -49,10 +50,9 @@ module.exports = function (app) {
                                 }
                             }
                         });
-
                 });
         }
-        listQuizzes();  
+        listQuizzes();
 
 
         // crud operations
@@ -73,15 +73,10 @@ module.exports = function (app) {
         };
 
 
-        // checkbox hell
-
+        // pushing or splicing a quiz from the user's editing array
         $scope.addOrRemoveFromSelectedQuizzes = function (quiz) {
 
-            userService.updateSelected(quiz, $scope.user)
-                .then(function (response) {
-
-                    listQuizzes();
-                });
+            userService.updateSelected(quiz, $scope.user);
         };
     }
 };

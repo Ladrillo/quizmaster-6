@@ -46,10 +46,9 @@ module.exports = function (app) {
                 });
         }
         listQuizzesEditing();
-        
-        
-        // checkbox hell
 
+
+        // pushing or splicing a quiz from the user's editing array
         $scope.addOrRemoveFromSelectedQuizzes = function (quiz) {
 
             userService.updateSelected(quiz, $scope.user)

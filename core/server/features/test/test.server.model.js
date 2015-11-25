@@ -8,10 +8,17 @@ var QuizSchema = new Schema({
             type: Schema.Types.ObjectId,
             ref: 'Quiz'
         }]
-    },
-    description: {
+    },    
+    title: {
         required: true,
-        type: String
+        type: String,
+        trim: true,
+        minlength: 1
+    },    
+    description: {
+        type: String,
+        trim: true,
+        minlength: 1
     },
     created: {
         type: Date,
@@ -24,6 +31,10 @@ var QuizSchema = new Schema({
     stats: {
         type: Object,
         default: {}
+    },
+    timelimit : {
+        type: Number,
+        default: 0
     }
 });
 

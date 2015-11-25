@@ -7,8 +7,8 @@ module.exports = function (app) {
         .post(Ctrl.postTest)
         .get(Ctrl.getTests);
 
-    app.route('/api/tests/:id')
-        .get(Ctrl.getOneTest)
-        .put(Ctrl.putTest)
-        .delete(Ctrl.deleteTest);
+    // app.route('/api/tests/:id')
+    //     .get(Ctrl.getOneTest)
+    //     .put(Ctrl.putTest)
+    //     .delete(Ctrl.deleteTest);
 };
