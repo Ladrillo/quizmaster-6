@@ -16,20 +16,9 @@
 
     <div ui-view="main"></div>
 
-    <!--<% if (userStr) { %>
-        <div>
-            <h3>You are authenticated as:</h3>
-            <img src="<%= userJSON.image %>"><br>
-            <%= userJSON.displayName %><br>
-            <%= userJSON.email %>
-        </div>
-    <% } else { %>
-        <div>
-            <h3>You are NOT authenticated.</h3>
-        </div>
-    <% } %>-->
-
-    <script>window.user = <%- userStr || 'null' %>;</script>
+    <script>
+        window.user = <%- userStr || 'null' %>;
+    </script>
     <script src="./build/bundle.js"></script>
 </body>
 

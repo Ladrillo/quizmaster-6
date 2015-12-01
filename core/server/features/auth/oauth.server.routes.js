@@ -21,7 +21,6 @@ module.exports = function (app) {
         }));
 
     // FACEBOOK AUTHENTICATION AND REDIRECTION
-
     app.route('/auth/facebook')
         .get(passport.authenticate('facebook', {
             scope: ['email']
@@ -50,7 +49,10 @@ module.exports = function (app) {
     // checking if logged-in
     app.route('/auth/checklogin')
         .get(function (req, res) {
-            if (req.user) res.send(true);
+            if (req.user) {
+                console.log('user -->', req.user);
+                res.send(true);
+            }
             else res.send(false);
         });
 
