@@ -26,6 +26,8 @@ module.exports = function (app) {
         // grabbing user
         $scope.user = authUserService.user;
 
+        listQuizzes();
+
 
         if ($stateParams.display === 'mine') {
             $scope.displayMine = true;
@@ -69,7 +71,6 @@ module.exports = function (app) {
                         });
                 });
         }
-        listQuizzes();
 
 
         // crud operations

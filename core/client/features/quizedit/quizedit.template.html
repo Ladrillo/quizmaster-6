@@ -1,5 +1,6 @@
 <quiz-login user="user"></quiz-login>
 <quiz-menu user="user"></quiz-menu>
+<flash-message flash-message="flashMesage"></flash-message>
 
 
 <md-card>
@@ -67,7 +68,7 @@
                     <form ng-submit="addToOptions(tempFalsy, 'falsy')" name="falsyForm">
                         <md-input-container class="md-block">
                             <label>Type falsiness and press Enter...</label>
-                            <input required name="falsyAnswer" ng-model="tempFalsy" minlength="1" maxlength="200">
+                            <input name="falsyAnswer" ng-model="tempFalsy" minlength="1" maxlength="200">
                         </md-input-container>
                         <md-list>
                             <md-list-item ng-repeat="falsy in quizInProgress.falsies">
@@ -95,10 +96,9 @@
         <div class="md-actions" layout="row" layout-align="end center">
             <md-button ng-click="logQuizInProgress()">Log Quiz in Progress</md-button>
             <md-button ng-click="createOrUpdateQuiz()">{{ creatingOrUpdating }} Quiz</md-button>
-            <md-button ng-click="listAllQuizzes()">List All Quizzes</md-button>
         </div>
 
     </md-card-content>
 </md-card>
 
-<!--{{ quizInProgress }}-->
+{{ quizInProgress }}

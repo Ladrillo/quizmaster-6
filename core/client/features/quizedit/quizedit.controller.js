@@ -122,6 +122,7 @@ module.exports = function (app) {
                         });
                 }
             }
+            else $scope.flashMessage = "The form is not filled-out completely";
         };
 
 

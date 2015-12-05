@@ -1,6 +1,6 @@
 <quiz-login user="user"></quiz-login>
 <quiz-menu user="user"></quiz-menu>
-
+<flash-message flash-message="flashMesage"></flash-message>
 
 <div layout="row">
     <md-card ng-show="displayMine ? quiz.creator._id === user._id : quiz.creator" ng-repeat="quiz in quizzes">

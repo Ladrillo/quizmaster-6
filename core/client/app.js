@@ -14,6 +14,7 @@ require('./services/auth.user.service')(app);
 require('./services/appstate.service')(app);
 require('./services/user.service')(app);
 require('./services/quiz.service')(app);
+require('./services/test.service')(app);
 
 
 // directives
@@ -26,6 +27,7 @@ require('./features/home/')(app);
 require('./features/quizedit/')(app);
 require('./features/quizlist/')(app);
 require('./features/testedit/')(app);
+require('./features/testlist/')(app);
 
 
 // routes

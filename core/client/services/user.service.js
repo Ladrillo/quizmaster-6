@@ -10,6 +10,7 @@ module.exports = function (app) {
 
             return $http.patch('/api/users/' + user._id + '?quiz=' + quiz._id)
                 .then(function (result) {
+
                     console.log('userService.updateSelected(quiz, user) ', result.data);
                     return result.data;
                 });
@@ -21,7 +22,20 @@ module.exports = function (app) {
 
             return $http.get('/api/users/' + user._id)
                 .then(function (result) {
+
                     console.log('userService.listOneUser(user): ', result.data);
+                    return result.data;
+                });
+        };
+
+
+        // we hit this to empty the editing array in the user, after successful test creation
+        this.resetEditing = function (user) {
+
+            return $http.patch('/api/users/' + user._id + '/reset')
+                .then(function (result) {
+
+                    console.log('userService.resetEditing(user) ', result.data);
                     return result.data;
                 });
         };

@@ -50,8 +50,7 @@ module.exports = function (app) {
     app.route('/auth/checklogin')
         .get(function (req, res) {
             if (req.user) {
-                console.log('user -->', req.user);
-                res.send(true);
+                res.send(req.user);
             }
             else res.send(false);
         });

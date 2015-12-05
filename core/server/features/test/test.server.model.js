@@ -8,14 +8,9 @@ var QuizSchema = new Schema({
             type: Schema.Types.ObjectId,
             ref: 'Quiz'
         }]
-    },    
+    },
     title: {
         required: true,
-        type: String,
-        trim: true,
-        minlength: 1
-    },    
-    description: {
         type: String,
         trim: true,
         minlength: 1
@@ -24,17 +19,13 @@ var QuizSchema = new Schema({
         type: Date,
         default: Date.now
     },
-    creator: [{
+    creator: {
         type: Schema.Types.ObjectId,
         ref: 'User',
-    }],
+    },
     stats: {
         type: Object,
         default: {}
-    },
-    timelimit : {
-        type: Number,
-        default: 0
     }
 });
 

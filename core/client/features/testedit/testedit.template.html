@@ -1,10 +1,10 @@
 <quiz-login user="user"></quiz-login>
 <quiz-menu user="user"></quiz-menu>
-
+<flash-message flash-message="flashMesage"></flash-message>
 
 <md-card>
     <md-card-content>
-        <md-content layout-lg="column" layout-gt-lg="row" layout-margin layout-padding>
+        <md-content layout="column" layout-margin layout-padding>
             <h3 class="md-display-1">{{ creatingOrUpdating }} Test</h3>
             <form name="titleForm">
                 <md-input-container class="md-block">
@@ -13,15 +13,6 @@
                     <div ng-messages="titleForm.title.$error" role="alert">
                         <div ng-message-exp="['required', 'minlength', 'maxlength']">
                             Please type a title for your test
-                        </div>
-                    </div>
-                </md-input-container>
-                <md-input-container class="md-block">
-                    <label>Description</label>
-                    <input required name="description" ng-model="testInProgress.description" minlength="1" maxlength="200">
-                    <div ng-messages="titleForm.description.$error" role="alert">
-                        <div ng-message-exp="['required', 'minlength', 'maxlength']">
-                            Please type a description
                         </div>
                     </div>
                 </md-input-container>
@@ -54,12 +45,10 @@
         <!--{{ selectedQuizzesIds }}-->
 
         <div class="md-actions" layout="row" layout-align="end center">
-            <md-button ng-click="logQuizInProgress()">Log Test in Progress</md-button>
-            <md-button ng-click="createOrUpdateQuiz()">{{ creatingOrUpdating }} Test</md-button>
-            <md-button ng-click="listAllQuizzes()">List All Tests</md-button>
+            <md-button ng-click="createOrUpdateTest()">{{ creatingOrUpdating }} Test</md-button>
         </div>
 
     </md-card-content>
 </md-card>
 
-<!--{{ testInProgress }}-->
+{{ testInProgress }}

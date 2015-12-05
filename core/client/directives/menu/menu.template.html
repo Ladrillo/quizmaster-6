@@ -5,13 +5,13 @@
         </button>
         <md-menu-content width="2">
             <md-menu-item>
-                <md-button ui-sref="quizlist({display:'mine'})">Browse Mine</md-button>
+                <md-button ui-sref="quizlist({display:'mine'})">Mine</md-button>
             </md-menu-item>
             <md-menu-item>
-                <md-button ui-sref="quizlist({display:'all'})">Browse All</md-button>
+                <md-button ui-sref="quizlist({display:'all'})">All</md-button>
             </md-menu-item>
             <md-menu-item>
-                <md-button ui-sref="quizedit({quiz:'new'})">Create New</md-button>
+                <md-button ui-sref="quizedit({quiz:'new'})">New</md-button>
             </md-menu-item>
         </md-menu-content>
     </md-menu>
@@ -21,27 +21,15 @@
         </button>
         <md-menu-content width="2">
             <md-menu-item>
+                <md-button ui-sref="testlist">Browse Tests</md-button>
+
+            </md-menu-item>
+            <md-menu-item>
                 <md-button ui-sref="testedit({test:'new'})">Create New</md-button>
-            </md-menu-item>
-            <md-menu-item>
-                <md-button ng-click="ctrl.sampleAction('share', $event)">
-                    Browse Tests
-                </md-button>
-            </md-menu-item>
-            <md-menu-item>
-                <md-button ng-click="ctrl.sampleAction('share', $event)">
-                    Create New Quiz
-                </md-button>
-            </md-menu-item>
-            <md-menu-divider></md-menu-divider>
-            <md-menu-item>
-                <md-button ng-click="ctrl.sampleAction('share', $event)">
-                    Log Out
-                </md-button>
             </md-menu-item>
         </md-menu-content>
     </md-menu>
-    <md-menu>
+    <!--<md-menu>
         <button ng-click="$mdOpenMenu()">
             Stats
         </button>
@@ -68,5 +56,5 @@
                 </md-button>
             </md-menu-item>
         </md-menu-content>
-    </md-menu>
+    </md-menu>-->
 </md-menu-bar>

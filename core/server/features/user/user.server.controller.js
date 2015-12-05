@@ -50,3 +50,18 @@ exports.patchUser = function (req, res, next) {
 };
 
 
+exports.resetEditing = function (req, res, next) {
+
+    User.findById(req.params.id)
+        .exec(function (err, user) {
+            if (err) res.status(500).send(err);
+            else {
+                user.editing = [];
+                user.save(function (err, user) {
+
+                    if (err) res.status(500).send(err);
+                    else res.json(user);
+                });
+            }
+        });
+};

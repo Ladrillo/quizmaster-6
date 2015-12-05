@@ -47,7 +47,7 @@ module.exports = function (app) {
                     }
                 }
             })
-            
+
             .state('testedit', {
                 url: '/tests/:test',
                 data: {
@@ -57,6 +57,19 @@ module.exports = function (app) {
                     main: {
                         template: require('./features/testedit/testedit.template.html'),
                         controller: 'testeditController'
+                    }
+                }
+            })
+
+            .state('testlist', {
+                url: '/tests',
+                data: {
+                    requireLogin: false
+                },
+                views: {
+                    main: {
+                        template: require('./features/testlist/testlist.template.html'),
+                        controller: 'testlistController'
                     }
                 }
             });
