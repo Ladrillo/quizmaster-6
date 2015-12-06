@@ -54,31 +54,20 @@ module.exports = function (app) {
         listQuizzesEditing();
 
 
-        // brings up the quizzes marked to be included in a test
+        // brings up the quizzes marked to be included in a test and checks checkboxes
         function listQuizzesEditing() {
 
             userService.listOneUser($scope.user)
                 .then(function (response) {
 
                     if ($stateParams.test === 'new') {
-                        var selectedQuizzesIds = { editing: response.editing };
-
-                        quizService.listQuizzesEditing(selectedQuizzesIds)
-                            .then(function (response) {
-
-                                $scope.editingQuizzes = response;
-                                for (var i in $scope.editingQuizzes) {
-                                    $scope.editingQuizzes[i].isSelected = true;
-                                    $scope.testInProgress.quizzes.push($scope.editingQuizzes[i]._id);
-                                }
-                                $scope.testInProgress.quizzes = $scope.editingQuizzes;
-                            });
+                        $scope.testInProgress.quizzes = response.editing;
                     }
-
                     else if ($stateParams.test !== 'new') {
-
-                        
-
+                        userService.updateSelectedMulti(appstate.getCurrentTest(), $scope.user);
+                    }
+                    for (var i in $scope.testInProgress.quizzes) {
+                        $scope.testInProgress.quizzes[i].isSelected = true;
                     }
                 });
         }

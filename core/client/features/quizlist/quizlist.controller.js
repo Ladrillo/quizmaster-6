@@ -53,7 +53,9 @@ module.exports = function (app) {
             userService.listOneUser($scope.user)
                 .then(function (response) {
 
-                    $scope.selectedQuizzesIds = response.editing;
+                    console.log('latest and greatesf from user...', response);
+                    $scope.selectedQuizzesIds = [];
+                    response.editing.forEach(function (quiz) { $scope.selectedQuizzesIds.push(quiz._id); });
 
                     quizService.listAllQuizzes()
                         .then(function (response) {

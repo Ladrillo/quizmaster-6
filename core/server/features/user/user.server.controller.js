@@ -17,6 +17,7 @@ exports.getUsers = function (req, res, next) {
 exports.getOneUser = function (req, res, next) {
 
     User.findById(req.params.id)
+        .populate('editing')
         .exec(function (err, user) {
 
             if (err) res.status(500).send(err);

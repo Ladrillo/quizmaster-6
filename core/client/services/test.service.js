@@ -47,16 +47,5 @@ module.exports = function (app) {
                     return data.data;
                 });
         };
-
-
-        this.listTestsEditing = function (editing) {
-
-            return $http.post('/api/tests/editing', editing)
-                .then(function (data) {
-
-                    console.log('testService.listTestsEditing(editing): ', data.data);
-                    return data.data;
-                });
-        };
     }
 };
