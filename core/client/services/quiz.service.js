@@ -32,7 +32,8 @@ module.exports = function (app) {
             return $http.delete('/api/quizzes/' + quizId)
                 .then(function (data) {
 
-                    console.log('quizService.delete(quizId): ', data.data);
+                    console.log('quizService.destroyQuiz(quizId): ', data.data);
+                    return data.data;
                 });
         };
 

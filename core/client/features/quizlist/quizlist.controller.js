@@ -86,7 +86,7 @@ module.exports = function (app) {
             quizService.destroyQuiz(id)
                 .then(function (response) {
 
-                    listQuizzes();
+                    if (response === "Quiz deleted!") listQuizzes();
                 });
         };
 

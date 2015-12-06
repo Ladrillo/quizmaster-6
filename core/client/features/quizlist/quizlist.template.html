@@ -18,7 +18,7 @@
             </div>
             <div class="md-actions" layout="row">
                 <md-button ng-disabled="quiz.creator._id !== user._id" class="md-primary md-button" ng-click="editQuiz(quiz)">Edit</md-button>
-                <md-button class="md-raised md-warn" ng-click="destroyQuiz(quiz._id)">Delete</md-button>
+                <md-button ng-disabled="quiz.creator._id !== user._id" class="md-raised md-warn" ng-click="destroyQuiz(quiz._id)">Delete</md-button>
             </div>
         </md-card-footer>
         <!--{{ quiz.isSelected }}-->

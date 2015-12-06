@@ -84,27 +84,23 @@ exports.deleteQuiz = function (req, res, next) {
 
                         if (err) res.status(500).send(err);
                         else {
-                            console.log('tests...', tests);
                             var ids = [];
                             tests.forEach(function (e) { ids = ids.concat(e.quizzes); });
                             ids = ids.map(function (e) { return JSON.stringify(e); });
-                            console.log('ids...', ids);
-                            console.log('rea.params.id...', JSON.stringify(req.params.id));
                             var isUsed = ids.some(function (e) { return e === JSON.stringify(req.params.id); });
-                            console.log('is used...', isUsed);
 
-                            if (user === creator && !isUsed) {
-                                quiz.remove(function (err) {
-
-                                    if (err) res.status(500).send(err);
-                                    else res.send(true);
-                                });
-                            }
-                            else if (user !== creator) {
+                            if (user !== creator) {
                                 res.send('You can\'t delete a quiz that\'s not yours!');
                             }
                             else if (isUsed) {
                                 res.send('You can\'t delete a quiz that\'s being used in a test!');
+                            }
+                            else if (user === creator && !isUsed) {
+                                quiz.remove(function (err) {
+
+                                    if (err) res.status(500).send(err);
+                                    else res.send('Quiz deleted!');
+                                });
                             }
                         }
                     });
