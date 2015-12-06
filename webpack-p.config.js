@@ -2,7 +2,7 @@ var devConfig = require('./webpack.config.js');
 var WebpackStrip = require('strip-loader');
 
 var stripLoader = {
-    test: [/\.js$/, /\.e6$/],
+    test: /\.js$/,
     exclude: /node_modules/,
     loader: WebpackStrip.loader('console.log')
 };
