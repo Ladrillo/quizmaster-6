@@ -79,13 +79,15 @@ exports.deleteQuiz = function (req, res, next) {
                 var user = JSON.stringify(req.user._id),
                     creator = JSON.stringify(quiz.creator._id);
 
-                Quiz.find({})
-                    .exec(function (err, quizzes) {
+                Test.find({})
+                    .exec(function (err, tests) {
 
                         if (err) res.status(500).send(err);
                         else {
+                            console.log('tests...', tests);
                             var ids = [];
-                            quizzes.forEach(function (e) { ids.push(JSON.stringify(e._id)); });
+                            tests.forEach(function (e) { ids = ids.concat(e.quizzes); });
+                            ids = ids.map(function (e) { return JSON.stringify(e); });
                             console.log('ids...', ids);
                             console.log('rea.params.id...', JSON.stringify(req.params.id));
                             var isUsed = ids.some(function (e) { return e === JSON.stringify(req.params.id); });
