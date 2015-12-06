@@ -6,6 +6,7 @@ module.exports = function (app) {
 
         var state = {
             currentQuiz: {},
+            currentTest:{},
             stateFrom: {
                 state: "",
                 params: {}
@@ -19,6 +20,14 @@ module.exports = function (app) {
 
         this.setCurrentQuiz = function (quiz) {
             state.currentQuiz = quiz;
+        };
+
+        this.getCurrentTest = function () {
+            return state.currentTest;
+        };
+
+        this.setCurrentTest = function (test) {
+            state.currentTest = test;
         };
 
         this.setStateFrom = function (stateFrom) {

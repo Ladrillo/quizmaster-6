@@ -28,8 +28,12 @@ module.exports = function (app) {
 
         $scope.user = authUserService.user;
 
-        listQuizzesEditing();
-
+        appstate.setStateFrom({
+            state: 'testedit',
+            params: {
+                test: $stateParams.test
+            }
+        });
 
         // new or edit logic
         if ($stateParams.test === 'new') {
@@ -41,40 +45,41 @@ module.exports = function (app) {
                 quizzes: [],
                 creator: $scope.user._id
             };
-
-            appstate.setStateFrom({
-                state: 'testedit',
-                params: {
-                    test: 'new'
-                }
-            });
         }
-        else {
+        else if ($stateParams.test !== 'new') {
             $scope.creatingOrUpdating = 'Update';
             $scope.testInProgress = appstate.getCurrentTest();
         }
+
+        listQuizzesEditing();
 
 
         // brings up the quizzes marked to be included in a test
         function listQuizzesEditing() {
 
-            $scope.selectedQuizzes = [];
-
             userService.listOneUser($scope.user)
                 .then(function (response) {
 
-                    var selectedQuizzesIds = { editing: response.editing };
+                    if ($stateParams.test === 'new') {
+                        var selectedQuizzesIds = { editing: response.editing };
 
-                    quizService.listQuizzesEditing(selectedQuizzesIds)
-                        .then(function (response) {
+                        quizService.listQuizzesEditing(selectedQuizzesIds)
+                            .then(function (response) {
 
-                            $scope.editingQuizzes = response;
-                            for (var i in $scope.editingQuizzes) {
-                                $scope.editingQuizzes[i].isSelected = true;
-                                $scope.testInProgress.quizzes.push($scope.editingQuizzes[i]._id);
-                            }
-                            $scope.testInProgress.quizzes = $scope.editingQuizzes;
-                        });
+                                $scope.editingQuizzes = response;
+                                for (var i in $scope.editingQuizzes) {
+                                    $scope.editingQuizzes[i].isSelected = true;
+                                    $scope.testInProgress.quizzes.push($scope.editingQuizzes[i]._id);
+                                }
+                                $scope.testInProgress.quizzes = $scope.editingQuizzes;
+                            });
+                    }
+
+                    else if ($stateParams.test !== 'new') {
+
+                        
+
+                    }
                 });
         }
 

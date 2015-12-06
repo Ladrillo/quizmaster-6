@@ -1,6 +1,6 @@
 var config = require('../../config/config'),
     passport = require('passport');
-    
+
 
 module.exports = function (app) {
 
@@ -16,7 +16,7 @@ module.exports = function (app) {
 
     app.route('/auth/google/oauth2redirect')
         .get(passport.authenticate('google', {
-            successRedirect: '/',
+            successRedirect: '/#/quizzes?display=all',
             failure: '/error/'
         }));
 
@@ -28,7 +28,7 @@ module.exports = function (app) {
 
     app.route('/auth/facebook/oauth2redirect')
         .get(passport.authenticate('facebook', {
-            successRedirect: '/',
+            successRedirect: '/#/quizzes?display=all',
             failure: '/error/'
         }));
 

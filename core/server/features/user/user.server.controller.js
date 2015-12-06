@@ -1,5 +1,6 @@
 var User = require('./user.server.model'),
-    Quiz = require('../quiz/quiz.server.model');
+    Quiz = require('../quiz/quiz.server.model'),
+    Test = require('../test/test.server.model');
 
 
 exports.getUsers = function (req, res, next) {
@@ -39,6 +40,24 @@ exports.patchUser = function (req, res, next) {
                         else {
                             user.editing.splice(user.editing.indexOf(quiz._id), 1);
                         }
+                        user.save(function (err, user) {
+
+                            if (err) res.status(500).send(err);
+                            else res.json(user);
+                        });
+                    });
+            }
+
+            else if (req.query.test) {
+                Test.findById(req.query.test)
+                    .exec(function (err, test) {
+
+                        user.editing = [];
+
+                        test.quizzes.forEach(function (quiz) {
+                            user.editing.push(quiz);
+                        });
+
                         user.save(function (err, user) {
 
                             if (err) res.status(500).send(err);

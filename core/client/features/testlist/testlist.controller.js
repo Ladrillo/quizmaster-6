@@ -27,6 +27,10 @@ module.exports = function (app) {
 
         $scope.user = authUserService.user;
 
+        listTests();
+
+
+
         function listTests() {
 
             testService.listAllTests()
@@ -34,11 +38,10 @@ module.exports = function (app) {
                     $scope.tests = response;
                 });
         }
-        listTests();
+
 
 
         // crud
-
         $scope.destroyTest = function (test) {
 
             testService.destroyTest(test)
@@ -46,6 +49,25 @@ module.exports = function (app) {
                     listTests();
                 });
         };
+
+
+       $scope.editTest = function (test) {
+
+            appstate.setCurrentTest(test);
+            console.log('current test...', appstate.getCurrentTest());
+            // userService.updateSelectedMulti(test, $scope.user);
+            $state.go('testedit', { test: test._id });
+       };
+
+       $scope.setAsCurrentTest = function (test) {
+
+           appstate.setCurrentTest(test);
+       }
+
+       $scope.logCurrentTest = function () {
+
+           console.log(appstate.getCurrentTest());
+       }
 
 
     }

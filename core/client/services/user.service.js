@@ -17,6 +17,18 @@ module.exports = function (app) {
         };
 
 
+        // we hit this one to populate user editing array when editing a test
+        this.updateSelectedMulti = function (test, user) {
+
+            return $http.patch('/api/users/' + user._id + '?test=' + test._id)
+                .then(function (result) {
+
+                    console.log('userService.updateSelectedMulti(test, user) ', result.data);
+                    return result.data;
+                });
+        };
+
+
         // we need this to get user with 'up to date' editing array
         this.listOneUser = function (user) {
 
