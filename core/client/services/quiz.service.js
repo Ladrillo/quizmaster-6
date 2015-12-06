@@ -10,7 +10,7 @@ module.exports = function (app) {
             return $http.post('/api/quizzes', quiz)
                 .then(function (data) {
 
-                    console.log('quizService.createQuiz: ', data);
+                    console.log('quizService.createQuiz(quiz): ', data);
                     return "quiz created";
                 });
         };
@@ -21,7 +21,7 @@ module.exports = function (app) {
             return $http.get('/api/quizzes')
                 .then(function (data) {
 
-                    // console.log(data.data);
+                    console.log('quizService.listAllQuizzes(): ', data.data);
                     return data.data;
                 });
         };
@@ -32,7 +32,7 @@ module.exports = function (app) {
             return $http.delete('/api/quizzes/' + quizId)
                 .then(function (data) {
 
-                    console.log(data);
+                    console.log('quizService.delete(quizId): ', data.data);
                 });
         };
 
@@ -42,7 +42,7 @@ module.exports = function (app) {
             return $http.put('/api/quizzes/' + quiz._id, quiz)
                 .then(function (data) {
 
-                    console.log(data);
+                    console.log('quizService.updateQuiz(quiz): ', data);
                 });
         };
 
@@ -51,7 +51,8 @@ module.exports = function (app) {
 
             return $http.post('/api/quizzes/editing', editing)
                 .then(function (data) {
-                    console.log(data.data);
+
+                    console.log('quizService.listQuizzesEditing(editing): ', data.data);
                     return data.data;
                 });
         };

@@ -20,6 +20,7 @@ require('./services/test.service')(app);
 // directives
 require('./directives/login/login.directive')(app);
 require('./directives/menu/menu.directive')(app);
+require('./directives/flash/flash.directive')(app);
 
 
 // features

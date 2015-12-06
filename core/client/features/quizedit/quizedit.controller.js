@@ -122,13 +122,19 @@ module.exports = function (app) {
                         });
                 }
             }
-            else $scope.flashMessage = "The form is not filled-out completely";
+            else $scope.flash = "The form is not filled-out completely";
         };
 
 
         // debugging
         $scope.logQuizInProgress = function () {
             console.log($scope.quizInProgress);
+        };
+
+
+        // cancel button
+        $scope.cancelOperation = function () {
+            $state.go(stateFrom.state, stateFrom.params);
         };
     }
 

@@ -6,6 +6,7 @@ module.exports = function (app) {
             '$state',
             '$http',
             'authUserService',
+            'appstate',
             '$mdDialog',
             homeController
         ]);
@@ -15,9 +16,15 @@ module.exports = function (app) {
         $state,
         $http,
         authUserService,
+        appstate,
         $mdDialog) {
 
             $scope.user = authUserService.user;
+
+            appstate.setStateFrom({
+                state: 'home',
+                params: {}
+            });
     }
 
 };

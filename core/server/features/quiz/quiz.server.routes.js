@@ -14,4 +14,7 @@ module.exports = function (app) {
 
     app.route('/api/quizzes/editing')
         .post(Ctrl.quizzesEditing);
+
+    app.route('/api/quizzes/:id/tests')
+        .post(Ctrl.isQuizBeingUsed);
 };

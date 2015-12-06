@@ -1,6 +1,6 @@
 <quiz-login user="user"></quiz-login>
 <quiz-menu user="user"></quiz-menu>
-<flash-message flash-message="flashMesage"></flash-message>
+<flash-message flash="flash"></flash-message>
 
 <div layout="row">
     <md-card ng-repeat="test in tests">
@@ -13,7 +13,7 @@
         <md-card-footer layout-align="space-between center">
             <div class="md-actions" layout="row">
                 <md-button ng-disabled="test.creator._id !== user._id" class="md-primary md-button" ng-click="editTest(test)">Edit</md-button>
-                <md-button ng-disabled="test.creator._id !== user._id" class="md-raised md-warn" ng-click="destroyTest(test._id)">Delete</md-button>
+                <md-button ng-disabled="test.creator._id !== user._id" class="md-raised md-warn" ng-click="destroyTest(test)">Delete</md-button>
             </div>
         </md-card-footer>
     </md-card>

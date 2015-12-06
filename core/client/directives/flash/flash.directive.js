@@ -8,11 +8,7 @@ module.exports = function (app) {
             template: require('./flash.template.html'),
 
             scope: {
-                flashMessage: "="
-            },
-
-            controller: function ($scope) {
-
+                flash: "="
             }
         };
     }

@@ -37,5 +37,16 @@ module.exports = function (app) {
         listTests();
 
 
+        // crud
+
+        $scope.destroyTest = function (test) {
+
+            testService.destroyTest(test)
+                .then(function (response) {
+                    listTests();
+                });
+        };
+
+
     }
 };

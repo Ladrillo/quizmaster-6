@@ -10,8 +10,8 @@ module.exports = function (app) {
             return $http.post('/api/tests', test)
                 .then(function (data) {
 
-                    console.log('testService.createTest: ', data);
-                    return "test created";
+                    console.log('testService.createTest(test): ', data.data);
+                    return data.data;
                 });
         };
 
@@ -21,18 +21,19 @@ module.exports = function (app) {
             return $http.get('/api/tests')
                 .then(function (data) {
 
-                    // console.log(data.data);
+                    console.log('testService.listAllTests(): ', data.data);
                     return data.data;
                 });
         };
 
 
-        this.destroyTest = function (testId) {
+        this.destroyTest = function (test) {
 
-            return $http.delete('/api/tests/' + testId)
+            return $http.delete('/api/tests/' + test._id)
                 .then(function (data) {
 
-                    console.log(data);
+                    console.log('testService.destroyTest(test): ', data.data);
+                    return data.data;
                 });
         };
 
@@ -42,7 +43,8 @@ module.exports = function (app) {
             return $http.put('/api/tests/' + test._id, test)
                 .then(function (data) {
 
-                    console.log(data);
+                    console.log('testService.destroyTest(test): ', data.data);
+                    return data.data;
                 });
         };
 
@@ -51,7 +53,8 @@ module.exports = function (app) {
 
             return $http.post('/api/tests/editing', editing)
                 .then(function (data) {
-                    console.log(data.data);
+
+                    console.log('testService.listTestsEditing(editing): ', data.data);
                     return data.data;
                 });
         };

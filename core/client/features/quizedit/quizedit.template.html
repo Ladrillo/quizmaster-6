@@ -1,6 +1,6 @@
 <quiz-login user="user"></quiz-login>
 <quiz-menu user="user"></quiz-menu>
-<flash-message flash-message="flashMesage"></flash-message>
+<flash-message flash="flash"></flash-message>
 
 
 <md-card>
@@ -43,7 +43,7 @@
 
             <md-card layout-fill >
                 <md-card-content>
-                    <h2 class="md-title">Truthy Answers</h2>
+                    <h2 class="md-title"><i class="mdi mdi-check"></i> Truthy Answers</h2>
                     <form ng-submit="addToOptions(tempTruthy, 'truthy')" name="truthyForm">
                         <md-input-container class="md-block">
                             <label>Type truthiness and press Enter...</label>
@@ -94,11 +94,12 @@
         </md-content>
 
         <div class="md-actions" layout="row" layout-align="end center">
-            <md-button ng-click="logQuizInProgress()">Log Quiz in Progress</md-button>
+            <!--<md-button ng-click="logQuizInProgress()">Log Quiz in Progress</md-button>-->
             <md-button ng-click="createOrUpdateQuiz()">{{ creatingOrUpdating }} Quiz</md-button>
+            <md-button ng-click="cancelOperation()">Cancel</md-button>
         </div>
 
     </md-card-content>
 </md-card>
 
-{{ quizInProgress }}
+{{ flash }}

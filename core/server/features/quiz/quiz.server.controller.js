@@ -1,4 +1,5 @@
 var Quiz = require('./quiz.server.model');
+var Test = require('../test/test.server.model');
 
 
 exports.postQuiz = function (req, res, next) {
@@ -78,16 +79,33 @@ exports.deleteQuiz = function (req, res, next) {
                 var user = JSON.stringify(req.user._id),
                     creator = JSON.stringify(quiz.creator._id);
 
-                if (user === creator) {
-                    quiz.remove(function (err) {
+                Quiz.find({})
+                    .exec(function (err, quizzes) {
 
                         if (err) res.status(500).send(err);
-                        else res.status(204).send('Removed');
+                        else {
+                            var ids = [];
+                            quizzes.forEach(function (e) { ids.push(JSON.stringify(e._id)); });
+                            console.log('ids...', ids);
+                            console.log('rea.params.id...', JSON.stringify(req.params.id));
+                            var isUsed = ids.some(function (e) { return e === JSON.stringify(req.params.id); });
+                            console.log('is used...', isUsed);
+
+                            if (user === creator && !isUsed) {
+                                quiz.remove(function (err) {
+
+                                    if (err) res.status(500).send(err);
+                                    else res.send(true);
+                                });
+                            }
+                            else if (user !== creator) {
+                                res.send('You can\'t delete a quiz that\'s not yours!');
+                            }
+                            else if (isUsed) {
+                                res.send('You can\'t delete a quiz that\'s being used in a test!');
+                            }
+                        }
                     });
-                }
-                else {
-                    res.send('You can\'t delete a quiz that\'s not yours!');
-                }
             }
         });
 };
@@ -100,5 +118,17 @@ exports.quizzesEditing = function (req, res, next) {
         .exec(function (err, quizzes) {
             if (err) res.status(500).send(err);
             else res.json(quizzes);
+        });
+};
+
+
+exports.isQuizBeingUsed = function (req, res, next) {
+
+    Quiz.find({})
+        .exec(function (err, quizzes) {
+
+            var ids = [];
+            quizzes.forEach(function (e) { ids.push(JSON.stringify(e._id)); });
+            res.send(ids.some(function (e) { return e === JSON.stringify(req.params.id); }));
         });
 };
